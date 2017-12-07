@@ -1,0 +1,150 @@
+<div ng-include src="'scripts/app/views/include/header.html'"></div>
+<div class="container" ng-cloak>
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <div class="Battle" ng-controller="bootCampExplainCtrl">
+                <div class="Panels" ng-if="btcmpExplain.rightAnswer || btcmpExplain.rightPuzzle">
+                    <div class="Panels-header">
+                        <div class="Battle-header">
+                            <p class="Battle-title">
+                                <a href="#bootcamp-sedine"><i class="fa fa-arrow-left pull-left" aria-hidden="true"></i></a> {{bootcampTitle}}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="Panels-content explain">
+                        <section class="explainTitle">
+                            <h1>{{btcmpExplain.qstName}}</h1>
+                            <div class="explainFormula">
+                                           <div ng-if="showQuesTitle == true" class="imgAnswer_single">
+                                        <img ng-src="{{QuestionImage}}">
+                                            </div>
+      
+                                            <div ng-if="showQuesTitle == false">
+                                            {{QuestionImage}}
+                                            </div>
+                             </div>
+                        </section>
+                        <section class="answerInstruction">
+                            <h1>Svar instruktion:</h1>
+                            <div class="smallDiv"><!-- {{btcmpExplain.solution}} -->
+                            <p>{{answerInstructions}}</p>
+                            <!-- <div ng-if="showTitle == 0">
+                                        <img ng-src="{{btcmpExplain.solution}}">
+                                            </div>
+                                            
+                                            <div ng-if="showTitle == 1">
+                                            {{btcmpExplain.solution}}
+                                            </div> -->
+                             
+                                            </div>
+                            <div class="clearfix"></div>
+                            <p class="smallDiv">Dit svar</p>
+                            <div class="btcmp_answer ansWrong">
+                                <div class="smallDiv">
+                                    <span class="ans_icon"><img ng-src="assets/images/close.png"></span> 
+                                    <div ng-if="btcmpExplain.userAnswer" class="chooseOne">
+                                    <div ng-if="showAnswer == true" class="imgAnswer_single">
+                                        <img ng-src="{{btcmpExplain.userAnswer}}">
+                                            </div>
+                                            <div ng-if="showAnswer == false">
+                                            {{btcmpExplain.userAnswer}}
+                                            </div>
+                                    </div>
+                                    <ul ng-if="!btcmpExplain.userAnswer" class="puzzle">
+                                        <li ng-repeat="item in btcmpExplain.userPuzzle"><!-- <span class="answer">{{item.content}}</span> -->
+                                        <div ng-if="showAnswer == true" class="imgAnswer col-md-6">
+                                            <span class="index">{{$index+1}}.</span>
+                                            <img ng-src="{{item.content}}">
+                                            </div>
+                                            <div ng-if="showAnswer == false">
+                                            {{item.content}}
+                                            </div>
+
+                                        </li>
+                                        <div class="clearfix"></div>
+                                    </ul>
+                                </div>
+                            </div>
+                            <p class="smallDiv">Korrekt svar</p>
+                            <div class="btcmp_answer ansCorrect">
+                                <div class="smallDiv">
+                                    <span class="ans_icon"><img ng-src="assets/images/tick.png"></span>
+                                    <div ng-if="btcmpExplain.userAnswer" class="chooseOne">
+                                        <div ng-if="showAnswer == true" class="imgAnswer_single">
+                                        <img ng-src="{{btcmpExplain.rightAnswer}}">
+                                            </div>
+                                            <div ng-if="showAnswer == false">
+                                            {{btcmpExplain.rightAnswer}}
+                                            </div>
+                                    </div>
+                                    <ul ng-if="!btcmpExplain.userAnswer" class="puzzle">
+                                        <li ng-repeat="item in btcmpExplain.rightPuzzle |  orderBy : 'order'"><!-- <span class="answer">{{item.content}}</span> -->
+                                            <div ng-if="showAnswer == true" class="imgAnswer col-md-6">
+                                            <span class="index">{{$index+1}}.</span>
+                                            <img ng-src="{{item.content}}">
+                                            </div>
+                                            <div ng-if="showAnswer == false">
+                                            {{item.content}}
+                                            </div>
+                                        </li>
+                                        <div class="clearfix"></div>
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="tip" ng-if="btcmpExplain.tip != 'string'">
+                            <h1>Hukommelses tip</h1>
+
+                            <div class="smallDiv">
+                                <div ng-if="showTip == true" class="imgAnswer_single">
+                                        <img ng-src="{{btcmpExplain.tip}}">
+                                            </div>
+      
+                                            <div ng-if="showTip == false">
+                                            {{btcmpExplain.tip}}
+                                            </div>
+               
+                            </div>
+                        </section>
+                        <section class="solution" ng-if="btcmpExplain.solution != 'string'">
+                            <h1>Step by step solution</h1>
+
+                            <div class="smallDiv">
+                                <div ng-if="showSolution == true" class="imgAnswer_single">
+                                        <img ng-src="{{btcmpExplain.solution}}">
+                                            </div>
+      
+                                            <div ng-if="showSolution == false">
+                                            {{btcmpExplain.solution}}
+                                            </div>
+               
+                            </div>
+                        </section>
+                        <section class="teory">
+                        <div ng-if="btcmpExplain.theory != 'string'">
+                            <h1>Teori</h1>
+                            <div class="smallDiv">
+                                <!-- <p>{{btcmpExplain.theory}}</p> -->
+                                <!-- <img ng-src="assets/images/teori.jpg"> -->
+                                <div ng-if="showTheory == true" class="imgAnswer_single">
+                                        <img ng-src="{{btcmpExplain.theory}}">
+                                            </div>
+                                            <div ng-hide="btcmpExplain.theory == 'string'">
+                                            <div ng-if="showTheory == false">
+                                            {{btcmpExplain.theory}}
+                                            </div>
+                                            </div>
+                            </div>
+                            </div>
+                            <div class="Battle-listActionTble col-sm-2 pull-right">
+                                <a href="" ng-click="tryAgain(qstId);"><span>Jeg forstår</span><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                                <!-- <a href="" ng-click="markResolved()"><span>Jeg forstår</span><i class="fa fa-angle-right" aria-hidden="true"></i></a> tryAgain(btcmpExplain.qstId);-->
+                            </div>
+                            <div class="clearfix"></div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

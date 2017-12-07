@@ -1,0 +1,50 @@
+<div class="opponent_bg" ng-controller="opponentCtrl as battle">
+    <div class="container">
+        <div class="col-lg-12 looking_opponent">
+            <h1>Søger en modstander....</h1>
+            <div ng-if="opntTimer == true">
+                <h3 class="opntTimer"><timer countdown="5" max-time-unit="'second'" interval="1000">{{sseconds}}</timer></h3>
+            </div>
+
+            <div class="col-lg-4 col-md-4 player circle opp_circle">
+                <div class="circle_inner">
+                    <div class="profile_cover">
+                    <div class="profile_border_lose"></div>
+                    <div class="img_cover"><img ng-src="{{userDetails.picture  || defaultUser}}"></div>
+                    </div>
+
+                    <h2>{{userDetails.FirstName}} {{userDetails.LastName}}</h2>
+                    <p> <span ng-if="userDetails.occupation.name == 'Gymnasieelev' || userDetails.occupation.name == 'Gymnasielærer' || userDetails.occupation.name == 'Rektor på ungdomsuddannelse' || userDetails.occupation.name == 'Vicerektor på ungdomsuddannelse'">{{ userDetails.institution.name }}</span>
+                        <br> {{ userDetails.slogan }}</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 verses">
+                <img src="./assets/images/opponent/crossimg.png">
+                <div class="verses_heading">
+                    <h1>VS</h1>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 opponent_player circle opp_circle">
+                <div class="circle_inner">
+                    <div class="profile_cover">
+                        <div class="profile_border_lose"></div>
+                        <div class="opponent_img img_cover">
+                             <img ng-src="{{opntDetails.picture}}">
+                        </div>
+                    </div>
+                    <h2>{{opntDetails.FirstName}} {{opntDetails.LastName}}</h2>
+                    <p> <span ng-if="userDetails.occupation.name == 'Gymnasieelev' || userDetails.occupation.name == 'Gymnasielærer' || userDetails.occupation.name == 'Rektor på ungdomsuddannelse' || userDetails.occupation.name == 'Vicerektor på ungdomsuddannelse'">{{ opntDetails.institution }}</span>
+                        <br> {{ opntDetails.slogan }}</p>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div>
+                <div class="clearfix"></div>
+                <a href="" class="button_accept" ng-click="reDirectBattle()">Afbryd</a>
+            </div>
+            <div class="bannerWrapper">
+                <a href="{{adUrl}}" target="blank"><img ng-src="{{adImage}}" ></a>
+            </div>
+        </div>
+    </div>
+</div>

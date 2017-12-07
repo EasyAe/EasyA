@@ -1,0 +1,145 @@
+<div class="page banners ">
+    <section class="tile mfp-hide" fullscreen="isFullscreen01">
+        <!-- tile header -->
+        <div class="tile-header dvd dvd-btm">
+            <h1 class="custom-font"><strong>Banners</strong></h1>
+        </div>
+        <!-- /tile header -->
+        <!-- tile widget -->
+        <div class="tile-widget" style="display: block;">
+            <p>Recommended banner sizes: 620 * 100</p> 
+        </div>
+        <div layout="row ">
+            <div class="col-xs-12 quiz_table">
+                <md-whiteframe class="md-whiteframe-3dp">
+                    <div class="table-responsive-vertical shadow-z-1">
+                        <table id="table" class="table table-hover table-mc-light-blue">
+                            <thead>
+                                <tr>
+                                    <th>Banners</th>
+                                    <th>Page</th>
+                                    <th>URL</th>
+                                    <th>Date</th>
+                                    <th></th>
+                                    <th><a href="" class="icon icon-default" data-toggle="modal" data-target="#edit_picture"><i class="fa fa-plus"></i></a></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="data in banners">
+                                    <td data-title="img"><img ng-src="{{data.image}}" style="width: 312px; height: 80px;"></td>
+                                    <td data-title="level">{{data.pageTitle}}</td>
+                                    <td data-title="education">
+                                        <input type="text" name="" ng-model="data.url">
+                                    </td>
+                                    <td data-title="edit">{{data.date}}</td>
+                                    <td data-title="edit"><a href="" class="icon icon-default transparent icon-ef-1 icon-ef-1b" ng-click="showBannerEditModel(data.id)"><i class="fa fa-pencil"></i></a></td>
+                                    <td data-title="delete"><a href="" class="icon icon-default transparent icon-ef-1 icon-ef-1b" ng-click="showDeleteModel(data.id)"><i class="fa fa-archive"></i></a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </md-whiteframe>
+            </div>
+        </div>
+    </section>
+    <div class="modal fade modal-ext" id="edit_picture" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <!--Content-->
+            <div class="modal-content">
+                <form name="banCreate">
+                    <div class="modal-body">
+                        <div class="file_upload">
+                            <img ngf-src="bannerImage" class="thumb" style="width: 406px; height: 146px;">
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <input type="file" ng-model="bannerImage" name="bannerImage" ngf-select required aria-label="bannerImage" accept="image/png">
+                                <md-button class="md-raised md-primary">Upload Picture</md-button>
+                                <div class="errors" ng-messages="banCreate.bannerImage.$error">
+                                    <div ng-message="required">Image required</div>
+                                </div>
+                            </md-input-container>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div>
+                            <md-select ng-model="bannerPage" placeholder="Select Page" class="md-no-underline" required md-no-asterisk="false">
+                                <md-option value="Winner Page">Winner Page</md-option>
+                                <md-option value="Looking for opponent page">Looking for opponent page</md-option>
+                                <md-option value="Battle Page">Battle Page</md-option>
+                                <md-option value="Bootcamp Page">Bootcamp Page</md-option>
+                            </md-select>
+                        </div>
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <input type="text" ng-model="url" name="url" placeholder="URL for banner" required>
+                            <div class="errors" ng-messages="catCreate.url.$error">
+                                <div ng-message="required">URL required</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                    <md-button type="button" class="md-raised md-warn modal_save pull-right" data-dismiss="modal">Cancel</md-button>
+                    <md-button type="button" class="md-raised md-primary modal_save pull-right" data-dismiss="modal" ng-click="createBanner()" ng-disabled="!(bannerImage && bannerPage && url)" style="background: rgb(3, 175, 91);color: rgba(255, 255, 255, 0.87);">Save</md-button>
+                </form>
+            </div>
+        </div>
+        <!--/.Content-->
+    </div>
+    <script id="bannerDeleteModel.html" type="text/ng-template">
+        <div class="modal-ext quiz_library" id="edit_subject">
+            <div class="modal-main">
+                <!--Content-->
+                <div class="content-main">
+                    <div class="modal-body">
+                        <h1 class="custom-font"><strong>Confirm that you want to delete?</strong></h1>
+                        <span>(This action can't be reversed)</span>
+                    </div>
+                    <div class="action_btn">
+                        <md-button type="button" class="md-raised md-primary modal_save" data-dismiss="modal" style="background: rgb(3, 175, 91);color: rgba(255, 255, 255, 0.87);">Keep</md-button>
+                        <md-button type="button" class="md-raised md-primary modal_save confirm md-warn" data-dismiss="modal" ng-click="ok(bannerId)">Delete</md-button>
+                    </div>
+                </div>
+                <!--/.Content-->
+            </div>
+        </div>
+    </script>
+
+     <script id="bannerEditModel.html" type="text/ng-template">
+        <div class="modal-ext quiz_library" id="edit_subject">
+            <div class="modal-main">
+                <form name="banEdit">
+                    <!--Content-->
+                    <div class="content-main">
+                        <div class="modal-body">
+                            <div class="file_upload">
+                                <img ng-hide="bannerImage" ng-src="{{banner.image}}" style="width: 406px; height: 146px;">
+                                <img ngf-src="bannerImage" class="thumb" style="width: 406px; height: 146px;">
+                                <md-input-container class="md-block" flex-gt-sm>
+                                    <input type="file" ng-model="bannerImage" name="bannerImage" ngf-select aria-label="bannerImage" accept="image/png">
+                                    <md-button class="md-raised md-primary">Upload Picture</md-button>
+                                    <div class="errors" ng-messages="banCreate.bannerImage.$error">
+                                        <div ng-message="required">Image required</div>
+                                    </div>
+                                </md-input-container>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div>
+                                <md-select ng-model="bannerPage" placeholder="Select Page" class="md-no-underline" required md-no-asterisk="false">
+                                    <md-option ng-selected="{{ banner.pageTitle === 'Winner Page' ? 'true' : 'false' }}" value="Winner Page">Winner Page</md-option>
+                                    <md-option ng-selected="{{ banner.pageTitle === 'Looking for opponent page' ? 'true' : 'false' }}" value="Looking for opponent page">Looking for opponent page</md-option>
+                                    <md-option ng-selected="{{ banner.pageTitle === 'Battle Page' ? 'true' : 'false' }}" value="Battle Page">Battle Page</md-option>
+                                    <md-option ng-selected="{{ banner.pageTitle === 'Bootcamp Page' ? 'true' : 'false' }}" value="Bootcamp Page">Bootcamp Page</md-option>
+                                </md-select>
+                            </div>
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <input type="text" ng-model="banner.url" name="url" placeholder="URL for banner" required>
+                                <div class="errors" ng-messages="catCreate.url.$error">
+                                    <div ng-message="required">URL required</div>
+                                </div>
+                            </md-input-container>
+                        </div>
+                        <md-button type="button" class="md-raised md-warn modal_save pull-right" data-dismiss="modal">Cancel</md-button>
+                        <md-button type="button" class="md-raised md-primary modal_save pull-right" data-dismiss="modal" ng-click="updateBanner(banner.id)" ng-disabled="!(bannerPage)" style="background: rgb(3, 175, 91);color: rgba(255, 255, 255, 0.87);">Save</md-button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!--/.Content-->
+    </script>
+</div>

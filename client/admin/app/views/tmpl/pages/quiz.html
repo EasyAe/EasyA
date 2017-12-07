@@ -1,0 +1,132 @@
+<div class="page quiz_library exam_type question_page">
+    <section class="tile mfp-hide" fullscreen="isFullscreen01">
+        <!-- tile header -->
+        <div class="tile-header dvd dvd-btm">
+            <h1 class="custom-font"><strong>Quiz library - Quiz</strong></h1>
+            <span>Education > Subject > Type > Subcategory > Quiz</span>
+        </div>
+        <!-- /tile header -->
+        <div layout="row">
+            <div class="col-xs-10  col-md-offset-1"> 
+                <div class="add_education">
+                    <div class="pull-left">
+                        <span>Total: 122</span>
+                    </div>
+                    <a href="" class="icon icon-default pull-right" data-toggle="modal" data-target="#new_subject" ng-show="quizCount < 1"><i class="fa fa-plus"></i></a>
+                    <a ng-click="back()" class="icon icon-default pull-right"><i class="fa fa-arrow-left"></i></a>
+                </div>
+            </div>
+        </div>
+        <div layout="row ">
+            <div class="col-xs-10  col-md-offset-1 quiz_table">
+                <md-whiteframe class="md-whiteframe-3dp">
+                    <div class="table-responsive-vertical shadow-z-1">
+                        <table id="table" class="table table-hover table-mc-light-blue">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Picture</th>
+                                    <th>Name</th>
+                                    <th>Edit</th>
+                                    <th>Delete</th>
+                                    <th>Active?</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="quiz in quizs">
+                                    <td data-title="score" class="hasRowSpan">
+                                        <div class="exam_score">30</div>
+                                    </td>
+                                    <td data-title="img"><img ng-src="{{quiz.imageUrl}}" style="width: 32px; height: 32px;"></td>
+                                    <td data-title="level">{{quiz.name}}</td>
+                                    <td data-title="edit"><a href="" class="icon icon-default transparent icon-ef-1 icon-ef-1b" ng-click="showQuizEditModel(quiz.id)"><i class="fa fa-pencil"></i></a></td>
+                                    <td data-title="delete"><a href="" class="icon icon-default transparent icon-ef-1 icon-ef-1b delete" ng-click="showDeleteModel(quiz.id)"><i class="fa fa-archive"></i></a></td>
+                                    <td data-title="check">
+                                        <md-checkbox ng-model="quiz.active" aria-label="{{quiz.id}}" ng-click="changeQuizStatus(quiz.id,quiz.active)"></md-checkbox>
+                                    </td>
+                                    <td>
+                                        <a ui-sref="app.question({eId:eId,sId:sId,eTid:eTid,sCid:sCid,qId:quiz.id})">View <i class="fa fa-arrow-right"></i></a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </md-whiteframe>
+            </div>
+        </div>
+    </section>
+    <div class="modal fade modal-ext" id="new_subject" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <!--Content-->
+            <div class="modal-content">
+                <form name="quizCreate">
+                    <div class="modal-body">
+                        <h1 class="custom-font"><strong>Create new Quiz</strong></h1>
+                        <p class="create_pluse">Quiz Image</p>
+                        <div class="file_upload">
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <img ngf-src="image" class="thumb" style="width: 50px; height: 50px;">
+                                <input type="file" ng-model="image" name="image" ngf-select required>
+                                <md-button class="md-raised md-primary">Upload</md-button>
+                                <div class="errors" ng-messages="quizCreate.image.$error">
+                                    <div ng-message="required">Image required</div>
+                                </div>
+                            </md-input-container>
+                        </div>
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <input type="text" ng-model="name" name="name" placeholder="Quiz name" required>
+                            <div class="errors" ng-messages="quizCreate.name.$error">
+                                <div ng-message="required">Quiz name required</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                    <md-button type="button" class="md-raised md-primary pull-right" data-dismiss="modal" ng-click="createQuiz()" ng-disabled="!(image && name)">Create</md-button>
+                </form>
+            </div>
+        </div>
+        <!--/.Content-->
+    </div>
+    <script id="quizEditModel.html" type="text/ng-template">
+        <div class="modal-ext quiz_library" id="edit_subject">
+            <div class="modal-main">
+                <!--Content-->
+                <div class="content-main">
+                    <div class="modal-body">
+                        <h1 class="custom-font"><strong>Edit Quiz</strong></h1>
+                        <p class="create_pluse">Quiz Image</p>
+                        <div class="file_upload">
+                            <img ng-hide="image" ng-src="{{quiz.imageUrl}}" style="width: 50px; height: 50px;">
+                            <img ngf-src="image" class="thumb" style="width: 50px; height: 50px;">
+                            <input type="file" ng-model="image" name="image" ngf-select>
+                            <md-button class="md-raised md-primary">Upload</md-button>
+                        </div>
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <input type="text" ng-model="quiz.name" ng-init="quiz.name"  name="name" placeholder="Quiz name">
+                        </md-input-container>
+                    </div>
+                    <md-button type="button" class="md-raised md-primary modal_save" data-dismiss="modal" ng-click="updateQuiz(quiz.id)">Save</md-button>
+                </div>
+            </div>
+            <!--/.Content-->
+        </div>
+    </script>
+    <script id="subCatDeleteModel.html" type="text/ng-template">
+        <div class="modal-ext quiz_library" id="edit_subject">
+            <div class="modal-main">
+                <!--Content-->
+                <div class="content-main">
+                    <div class="modal-body">
+                        <h1 class="custom-font"><strong>Confirm that you want to delete this and all its content?</strong></h1>
+                        <span>(This action can't be reversed)</span>
+                    </div>
+                    <div class="action_btn">
+                        <md-button type="button" class="md-raised md-primary modal_save" data-dismiss="modal" ng-click="cancel()">Keep</md-button>
+                        <md-button type="button" class="md-raised md-primary modal_save confirm" data-dismiss="modal" ng-click="ok(subCatId)">Confirm</md-button>
+                    </div>
+                </div>
+            </div>
+            <!--/.Content-->
+        </div>
+    </script>
+</div>

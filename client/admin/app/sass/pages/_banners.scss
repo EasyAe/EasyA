@@ -1,0 +1,163 @@
+.banners {
+    .modal-content {
+        display: table;
+        width: 80%;
+        padding: 20px;
+        md-input-container {
+            padding: 0px 0 0 0px;
+ 
+            label {
+                padding: 0px 0 0 0px;
+            }
+        }
+        .quiz_library_select md-select {
+            margin: 20px 0 26px 0;
+        }
+    }
+    .education {
+        clear: both;
+        display: table;
+        margin: 30px 0;
+    }
+    .file_upload {
+        img {
+            
+        }
+        input[type="file"] {
+            opacity:0;
+            z-index: 99999;
+            position: absolute;
+            width: 33%;
+            left: 0px;
+            top: 16px;
+            height: 42px;
+        }
+        button {
+            top: 18px;
+            margin: 0;
+            cursor: pointer
+        }
+    }
+    .custom-font {
+        font-size: 26px !important;
+        margin: 0;
+    }
+    .quiz_table {
+        margin-bottom: 50px;
+    }
+    .tile .tile-header {
+        margin-bottom: 0px!important;
+    }
+    .tile .tile-header h1 {
+        margin: 10px 0;
+    }
+    #edit_subject {
+        .modal_save {
+            display: table;
+            margin: 0 auto 20px;
+        }
+    }
+    #delete_subject {
+        .modal-body {
+            .custom-font {
+                margin: 20px 0 10px 0;
+            }
+        }
+        .action_btn {
+            display: table;
+            margin: 0 auto;
+            button {
+                width: 150px;
+                float: left;
+            }
+            .confirm {
+                background-color: red;
+            }
+        }
+    }
+    .create_pluse {
+        padding: 15px 0 0 15px;
+        display: block;
+    }
+    table {
+        &.table > tbody > tr > td {
+            vertical-align: middle;
+            cursor: pointer;
+        }
+        md-checkbox {
+
+            margin: 0;
+        }
+        .icon {
+            width: 30px;
+            height: 30px;
+            margin: 0;
+            text-decoration: none;
+            .fa {
+                font-size: 15px;
+                line-height: 30px;
+            }
+        }
+    }
+
+    .table-responsive-vertical {
+        margin: 20px 0 0 0;
+    }
+    .add_education {
+        .icon {
+            width: 35px;
+            height: 35px;
+            margin: 0;
+            text-decoration: none;
+            .fa {
+                font-size: 21px;
+                line-height: 36px;
+            }
+        }
+    }
+    .quiz_library_select {
+        md-select {
+            width: 400px;
+            padding: 0 0 0 15px;
+            margin: 10px 0 26px 0;
+            .md-select-value.md-select-placeholder {
+                color: #616f77;
+            }
+        }
+    }
+    md-whiteframe{
+        display: block;
+    }
+}
+
+.md-select-menu-container {
+    z-index: 9999;
+}
+
+.exam_type {
+    .quiz_table {
+        margin-top: 50px ;
+        md-whiteframe{
+            display: block;
+            padding:20px;
+        }
+        .table-responsive-vertical {
+            margin: 0;
+         }
+        .table > thead > tr > th:nth-child(1) {
+            border-bottom: none;
+        }
+        .table > tbody > tr > td:nth-child(1) {
+            border-top: 0;
+        }
+        .table-hover > tbody > tr:hover td:nth-child(1){
+            background-color: #fff;
+        }
+
+    }
+    .add_education {
+        margin-top: 30px;
+    }
+}
+
+

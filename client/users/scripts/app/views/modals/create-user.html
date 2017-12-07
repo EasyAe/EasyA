@@ -1,0 +1,26 @@
+<div id="welcome_user">
+    <div class="modal-main">
+        <!-- Modal content-->
+        <div class="content-main">
+            <div class="modal-header">
+                <h4 class="modal-title">Opret en gratis bruger</h4>
+            </div>
+            <div class="modal-body">
+                <div class="image_preview"><img src="./assets/images/blank.jpg" ng-src="{{ thumbnail.dataUrl }}" /></div>
+                <label class="fileContainer">
+                    Upload
+                    <input type="file" name="file" class="letsbattle_button" onchange="angular.element(this).scope().photoChanged(this.files)" />
+                </label>
+                <div class="footer_upload editUser-submit">
+                    <span class="error-message upload-error" ng-show="uploadErr">{{uploadErrMsg}}</span>
+                    <button class="btn btn-success" ng-click="modalClose();">
+                        Cancel
+                    </button>
+                    <button class="btn btn-success" ng-click="proPicUpload();">
+                        Confirm
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

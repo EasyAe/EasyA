@@ -1,0 +1,68 @@
+<!--create user modal-->
+<div id="create-user" ng-hide="signupToggle">
+    <div class="modal-main">
+        <!-- Modal content-->
+        <div class="content-main">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="modalClose();">&times;</button>
+                <p>Opret en gratis bruger</p>
+            </div>
+            <div class="modal-body">
+                <form name="user_form" class="form-validation" novalidate>
+                    <div class="User-form">
+                        <div class="row">
+                            <input type="text" name="" placeholder="Fornavn" ng-model="register.FirstName" class=" form-control" required>
+                        </div>
+                        <div class="row">
+                            <input type="text" name="" placeholder="Efternavn" ng-model="register.LastName" class=" form-control" required>
+                        </div>
+                        <div class="row">
+                            <input type="email" name="" placeholder="Email" ng-model="register.email" class=" form-control" required>
+                        </div>
+                        <div class="row">
+                            <input type="password" name="" placeholder="Password" class=" form-control" ng-model="register.password" required>
+                            <div class="alert alert-danger error_msg_signup" ng-show="errPwdMsg">{{errPwdMsg}}</div>
+                        </div>
+                    </div>
+                    <div class="user-accept">
+                        <div class="user-accept-sub">
+                            <div class="row terms_checkbox">
+                                <input type="checkbox" name="agree" class="checkbox-primary" ng-model="terms_conditions.isSelected">
+                                <label>Jeg accepterer Vilkår og Betingelser</label>
+                            </div>
+                            <div class="row">
+                                <button type="submit" class="btn btn-success" ng-disabled='user_form.$invalid || !terms_conditions.isSelected' ng-click="checkPwd(register);">
+                                    Opret en konto
+                                </button>
+                                <div class="alert alert-danger error_msg_signup" ng-show="regError">{{regErrMsg}}</div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="confirm" ng-show="signupToggle">
+    <div class="modal-main">
+        <!-- Modal content-->
+        <div class="content-main">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="modalClose();">&times;</button>
+                <p>Check din email</p>
+            </div>
+            <div class="modal-body">
+                <div class="user-confirm-popup">
+                    <div class="row">
+                        <h3>Du har fået tilsendt en mail hvor du skal bekræfte din registrering</h3>
+                    </div>
+                    <div class="row">
+                        <button class="btn btn-success" ng-click="modalClose();">Ok</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

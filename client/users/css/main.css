@@ -1,0 +1,275 @@
+/* Global Styles */
+body {
+  margin-top: 80px;
+  background-color: #eaeaea;
+  color: #7d7d7d;
+  font-family: 'Raleway', sans-serif; }
+
+hr {
+  border-top: 3px solid #eaeaea;
+  width: 85%; }
+
+.Navbar {
+  background-color: #58cce9;
+  color: #ffffff;
+  box-shadow: 2px 2px 10px 1px rgba(0, 0, 0, 0.35); }
+  .Navbar-logo img {
+    margin: 10px 0; }
+  .Navbar-nav {
+    margin: 10px 0 10px 200px; }
+    .Navbar-nav li {
+      display: inline-block;
+      padding: 5px 20px; }
+      .Navbar-nav li.active, .Navbar-nav li:hover {
+        background: #1bb8df;
+        border-radius: 20px; }
+      .Navbar-nav li a {
+        color: #ffffff;
+        margin: 10px 0;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: bold; }
+      .Navbar-nav li.pull-right {
+        font-size: 25px;
+        padding: 0 10px; }
+
+.Sidebar-avatar {
+  position: relative;
+  top: 30px;
+  margin: auto;
+  width: 162px;
+  height: 131px; }
+  .Sidebar-avatar img {
+    position: absolute;
+    width: 117px;
+    border: 5px solid #fdfdfd;
+    border-radius: 100%;
+    left: 22px;
+    top: -5px; }
+
+.Sidebar-content {
+  position: relative;
+  margin-top: 70px;
+  padding: 25px;
+  text-align: center; }
+  .Sidebar-content-title {
+    color: #4c4c4c;
+    font-size: 20px;
+    font-weight: bold; }
+  .Sidebar-content-subtitle {
+    color: #7d7d7d;
+    font-size: 16px;
+    font-weight: bold; }
+
+.Sidebar-points {
+  border-top: 7px solid #f0e15d;
+  border-bottom: 7px solid #eaa05e;
+  background-image: linear-gradient(#f0e15d, #eaa05e), linear-gradient(#f0e15d, #eaa05e);
+  background-size: 7px 100%;
+  background-position: 0 0, 100% 0;
+  background-repeat: no-repeat;
+  border-radius: 15px; }
+  .Sidebar-points-content {
+    position: relative;
+    padding: 10px; }
+    .Sidebar-points-content p {
+      margin: 0px; }
+    .Sidebar-points-content .total {
+      color: #7d7d7d;
+      font-size: 16px;
+      font-weight: bold; }
+    .Sidebar-points-content .number {
+      color: #4c4c4c;
+      font-size: 30px;
+      font-weight: bold; }
+    .Sidebar-points-content:before {
+      position: absolute;
+      top: 50%;
+      left: 10%;
+      display: block;
+      content: "";
+      width: 24px;
+      height: 24px;
+      transform: translateY(-50%); }
+    .Sidebar-points-content:after {
+      position: absolute;
+      top: 50%;
+      right: 10%;
+      display: block;
+      content: "";
+      width: 24px;
+      height: 24px;
+      transform: translateY(-50%); }
+
+.Sidebar-progressBar {
+  margin-top: 10px;
+  text-align: left; }
+  .Sidebar-progressBar p {
+    margin: 0;
+    color: #7d7d7d; }
+    .Sidebar-progressBar p strong {
+      color: #4c4c4c; }
+  .Sidebar-progressBar .progress {
+    margin: 5px 0 10px 0;
+    height: 10px; }
+
+.Panels {
+  background: #fdfdfd;
+  box-shadow: 2px 2px 10px 1px rgba(0, 0, 0, 0.35);
+  border-radius: 8px;
+  margin-bottom: 20px; }
+  .Panels-header {
+    height: 70px;
+    border-radius: 8px 8px 0 0;
+    background: #58cce9; }
+  .Panels-content {
+    height: auto;
+    border-radius: 0 0 8px 8px; }
+
+.Profil-info {
+  padding: 25px 0 25px 25px; }
+  .Profil-info-header {
+    color: #ffffff; }
+  .Profil-info-group {
+    color: #7d7d7d;
+    margin-top: 20px; }
+    .Profil-info-group p {
+      margin: 5px 0;
+      font-size: 16px; }
+
+.Profil-avatar {
+  padding-left: 20px; }
+  .Profil-avatar img {
+    width: 130px;
+    border: 5px solid #fdfdfd;
+    border-radius: 100%; }
+
+.Profil-text .icon {
+  display: inline-block;
+  margin-right: 10px; }
+
+.Profil-text-lg, .Profil-text-md {
+  margin: 0;
+  font-weight: bold;
+  line-height: 1.2; }
+
+.Profil-text-lg {
+  font-size: 20px; }
+
+.Profil-text-md {
+  font-size: 16px; }
+
+.Profil-content {
+  padding: 10px 0; }
+
+.Profil-button {
+  width: 75%; }
+  .Profil-button .button {
+    position: relative;
+    right: 0;
+    background-color: transparent;
+    border: 2px solid #ffffff;
+    border-radius: 20px;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 5px 15px;
+    text-decoration: none;
+    cursor: pointer; }
+    .Profil-button .button:hover {
+      background-color: #1bb8df; }
+
+.Profil-battlesHeader, .Profil-pointsHeader {
+  padding: 0 60px; }
+
+.Profil-battlesContent {
+  text-align: center; }
+  .Profil-battlesContent .roundProgress {
+    position: relative;
+    display: inline-block;
+    padding: 0 80px; }
+  .Profil-battlesContent .value {
+    position: absolute;
+    top: calc(50% - 26px);
+    left: 50%;
+    width: 120px;
+    transform: translate(-50%); }
+
+.SectionStars {
+  position: relative;
+  color: #4c4c4c;
+  font-weight: bold;
+  font-size: 30px;
+  text-align: center; }
+  .SectionStars-content:before {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    display: block;
+    content: "";
+    width: 24px;
+    height: 24px;
+    transform: translateY(-50%); }
+  .SectionStars-content:after {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    display: block;
+    content: "";
+    width: 24px;
+    height: 24px;
+    transform: translateY(-50%); }
+
+.Battle-header {
+  text-align: center;
+  padding: 25px 0; }
+
+.Battle-title {
+  color: #ffffff;
+  font-size: 20px; }
+
+.Battle-content {
+  padding: 30px 60px; }
+
+.Battle-list {
+  position: relative;
+  padding: 20px; }
+  .Battle-list:nth-last-child(1n+2) {
+    border-bottom: 1px solid #eaeaea; }
+
+.Battle-listImg, .Battle-listName, .Battle-listAction {
+  display: inline-block; }
+
+.Battle-listName {
+  font-size: 20px;
+  color: #4c4c4c;
+  font-weight: bold;
+  margin-left: 40px; }
+
+.Battle-listAction {
+  background-color: #d5d5d5;
+  position: absolute;
+  border-radius: 15px;
+  right: 0;
+  top: 50%;
+  transform: translate(0, -50%);
+  width: 150px;
+  cursor: pointer;
+  padding: 9px;
+  font-weight: bold;
+  font-size: 16px; }
+  .Battle-listAction a {
+    color: #7d7d7d;
+    text-decoration: none; }
+  .Battle-listAction i {
+    float: right; }
+
+.BannerAd {
+  margin-top: 20px;
+  background-color: #f6f6f6;
+  padding: 30px;
+  border-radius: 0 0 8px 8px; }
+  .BannerAd-content {
+    min-height: 123px;
+    background: url("/assets/images/bannerAd.png") no-repeat;
+    background-size: contain; }

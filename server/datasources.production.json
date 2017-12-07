@@ -1,0 +1,34 @@
+{
+  "db": {
+    "host": "localhost",
+    "port": 5432,
+    "database": "easyae_prod",
+    "password": "rT2q7j7H",
+    "name": "db",
+    "user": "api",
+    "connector": "postgresql"
+  },
+  "amazonS3": {
+    "name": "amazonS3",
+    "connector": "loopback-component-storage",
+    "provider": "amazon",
+    "key": "/FvSsiHjwT0LncSx1cNh9wcgyllYMCKlgd25sWKE",
+    "keyId": "AKIAITDUHY7CWFE4XFTQ"
+  },
+  "EmailDataSource": {
+    "name": "EmailDataSource",
+    "connector": "mail",
+    "transports": [
+      {
+        "type": "SMTP",
+        "host": "send.one.com",
+        "secure": true,
+        "port": 465,
+        "auth": {
+          "user": "noreply@easyae.dk",
+          "pass": "Google300"
+        }
+      }
+    ]
+  }
+}

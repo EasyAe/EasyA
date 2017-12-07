@@ -1,0 +1,269 @@
+<div class="page page-dashboard">
+
+  <div class="pageheader">
+
+    <h2>{{page.title}} <span>// {{page.subtitle}}</span></h2>
+
+    <div class="page-bar">
+
+      <ul class="page-breadcrumb">
+        <li>
+          <a ui-sref="app.dashboard"><i class="fa fa-home"></i> {{main.title}}</a>
+        </li>
+        <li>
+          <a ui-sref="app.dashboard">{{page.title}}</a>
+        </li>
+      </ul>
+
+    </div>
+
+  </div>
+
+  <!-- daily stats row -->
+  <div class="row">
+
+    <!-- col -->
+    <div class="card-container col-lg-3 col-sm-6 col-sm-12">
+      <div class="card">
+        <div class="front bg-greensea">
+
+          <!-- row -->
+          <div class="row">
+            <!-- col -->
+            <div class="col-xs-4">
+              <i class="fa fa-users fa-4x"></i>
+            </div>
+            <!-- /col -->
+            <!-- col -->
+            <div class="col-xs-8">
+              <p class="text-elg text-strong mb-0">{{ stats.loggedInUsers }}</p>
+              <span>Users Online</span>
+            </div>
+            <!-- /col -->
+          </div>
+          <!-- /row -->
+
+        </div>
+        <div class="back bg-greensea">
+
+          <!-- row -->
+          <div class="row">
+            <!-- col -->
+            <div class="col-xs-12">
+              <a href=javascript:; ng-click="refreshCountLoggedInUsers()"><i class="fa fa-refresh fa-2x"></i> Refresh</a>
+            </div>
+            <!-- /col -->
+          </div>
+          <!-- /row -->
+
+        </div>
+      </div>
+    </div>
+    <!-- /col -->
+
+    <!-- col -->
+    <div class="card-container col-lg-3 col-sm-6 col-sm-12">
+      <div class="card">
+        <div class="front bg-lightred">
+
+          <!-- row -->
+          <div class="row">
+            <!-- col -->
+            <div class="col-xs-4">
+              <i class="fa fa-user-plus fa-4x"></i>
+            </div>
+            <!-- /col -->
+            <!-- col -->
+            <div class="col-xs-8">
+              <p class="text-elg text-strong mb-0">{{ stats.newUsers }}</p>
+              <span>New Users</span>
+            </div>
+            <!-- /col -->
+          </div>
+          <!-- /row -->
+
+        </div>
+        <div class="back bg-lightred">
+
+          <!-- row -->
+          <div class="row">
+            <!-- col -->
+            <div class="col-xs-12">
+              <a href=javascript:; ng-click="refreshCountNewUsers()"><i class="fa fa-refresh fa-2x"></i> Refresh</a>
+            </div>
+            <!-- /col -->
+          </div>
+          <!-- /row -->
+
+        </div>
+      </div>
+    </div>
+    <!-- /col -->
+
+    <!-- col -->
+    <div class="card-container col-lg-3 col-sm-6 col-sm-12">
+      <div class="card">
+        <div class="front bg-blue">
+
+          <!-- row -->
+          <div class="row">
+            <!-- col -->
+            <div class="col-xs-4">
+              <i class="fa fa-gamepad fa-4x"></i>
+            </div>
+            <!-- /col -->
+            <!-- col -->
+            <div class="col-xs-8">
+              <p class="text-elg text-strong mb-0">{{ stats.gamesPlayed }}</p>
+              <span>Games Played</span>
+            </div>
+            <!-- /col -->
+          </div>
+          <!-- /row -->
+
+        </div>
+        <div class="back bg-blue">
+
+          <!-- row -->
+          <div class="row">
+            <!-- col -->
+            <div class="col-xs-12">
+              <a href=javascript:; ng-click="refreshCountGamesPlayed()"><i class="fa fa-refresh fa-2x"></i> Refresh</a>
+            </div>
+            <!-- /col -->
+          </div>
+          <!-- /row -->
+
+        </div>
+      </div>
+    </div>
+    <!-- /col -->
+
+    <!-- col -->
+    <!-- <div class="card-container col-lg-3 col-sm-6 col-sm-12">
+      <div class="card">
+        <div class="front bg-slategray">
+
+          <div class="row">
+            <div class="col-xs-4">
+              <i class="fa fa-user fa-4x"></i>
+            </div>
+            <div class="col-xs-8">
+              <p class="text-elg text-strong mb-0">{{ stats.premiumUsers }}</p>
+              <span>Premium Users</span>
+            </div>
+          </div>
+
+        </div>
+        <div class="back bg-slategray">
+
+          <div class="row">
+            <div class="col-xs-12">
+              <a href=javascript:; ng-click="refreshCountPremiumUsers()"><i class="fa fa-refresh fa-2x"></i> Refresh</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div> -->
+    <!-- /col -->
+
+    <!-- col -->
+    <div class="card-container col-lg-3 col-sm-6 col-sm-12">
+      <div class="card">
+        <div class="front bg-amethyst">
+
+          <!-- row -->
+          <div class="row">
+            <!-- col -->
+            <div class="col-xs-4">
+              <i class="fa fa-users fa-4x"></i>
+            </div>
+            <!-- /col -->
+            <!-- col -->
+            <div class="col-xs-8">
+              <p class="text-elg text-strong mb-0">{{ stats.totalUsers }}</p>
+              <span>Total Users</span>
+            </div>
+            <!-- /col -->
+          </div>
+          <!-- /row -->
+
+        </div>
+        <div class="back bg-amethyst">
+
+          <!-- row -->
+          <div class="row">
+            <!-- col -->
+            <div class="col-xs-12">
+              <a href=javascript:; ng-click="refreshCountTotalUsers()"><i class="fa fa-refresh fa-2x"></i> Refresh</a>
+            </div>
+            <!-- /col -->
+          </div>
+          <!-- /row -->
+
+        </div>
+      </div>
+    </div>
+    <!-- /col -->
+
+  </div>
+  <!-- /row -->
+
+  <!-- filtered stats row -->
+  <div class="row">
+    <div class="col-md-12">
+      <section class="tile" fullscreen="isFulscreen01" ng-controller="StatisticsChartCtrl as stats">
+        <!-- tile header -->
+        <div class="tile-header bg-greensea dvd dvd-btm">
+          <h1 class="custom-font"><strong>Statistics </strong>Graph</h1>
+          <ul class="controls">
+            <li>
+              <a href="javascript:;" daterangepicker="stats.rangeOptions" date-begin="stats.startDate" date-end="stats.endDate">
+                <span>{{stats.startDate}} - {{stats.endDate}}</span>&nbsp;&nbsp;<i class="fa fa-angle-down"></i>
+              </a>
+            </li>
+            <li class="dropdown" uib-dropdown on-toggle="toggled(open)">
+
+              <a href uib-dropdown-toggle class="dropdown-toggle settings"><i class="fa fa-cog"></i></a>
+
+              <ul class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
+                <li>
+                  <a href tile-control-toggle>
+                    <span class="minimize"><fa name="angle-down"></fa>&nbsp;&nbsp;&nbsp;Minimize</span>
+                    <span class="expand"><fa name="angle-up"></fa>&nbsp;&nbsp;&nbsp;Expand</span>
+                  </a>
+                </li>
+                <li>
+                  <a href tile-control-refresh ng-click="ajaxFaker()">
+                    <fa name="refresh"></fa> Refresh
+                  </a>
+                </li>
+                <li>
+                  <a href tile-control-fullscreen ng-click="isFullscreen01 = !isFullscreen01">
+                    <fa name="expand"></fa> Fullscreen
+                  </a>
+                </li>
+                <li>
+                  <a href tile-control-lightbox>
+                    <fa name="magnet"></fa> Open in Lightbox
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <!-- /tile header -->
+
+        <!-- tile widget -->
+        <div class="tile-widget bg-greensea">
+
+          <flot dataset="stats.dataset" options="stats.options" height="250px"></flot>
+
+        </div>
+        <!-- /tile widget -->
+      </section>
+    </div>
+  </div>
+  <!-- /row -->
+</div>

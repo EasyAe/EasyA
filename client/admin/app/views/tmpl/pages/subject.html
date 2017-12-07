@@ -1,0 +1,134 @@
+<div class="page quiz_library question_page">
+    <section class="tile mfp-hide" fullscreen="isFullscreen01">
+        <!-- tile header -->
+        <div class="tile-header dvd dvd-btm">
+            <h1 class="custom-font"><strong>Quiz library - Subject</strong></h1>
+            <span>{{education.name}}</span>
+        </div>
+        <!-- /tile header -->
+        <div layout="row" class="quiz_library_select">
+            <div class="col-xs-10  col-md-offset-1">
+                <div class="add_education">
+                    <a ng-click="back()" class="icon icon-default pull-right"><i class="fa fa-arrow-left"></i></a>
+                    <a href="" class="icon icon-default" data-toggle="modal" data-target="#new_subject"><i class="fa fa-plus"></i></a>
+                </div>
+            </div>
+        </div>
+        <div layout="row ">
+            <div class="col-xs-10  col-md-offset-1 quiz_table">
+                <md-whiteframe class="md-whiteframe-3dp">
+                    <div class="table-responsive-vertical shadow-z-1">
+                        <table id="table" class="table table-hover table-mc-light-blue">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Name</th>
+                                    <th>Edit</th>
+                                    <th>Delete</th>
+                                    <th>Active?</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="quiz in quizs">
+                                    <td data-title="image"><img ng-src="{{quiz.imageUrl}}" style="width: 32px; height: 32px;"></td>
+                                    <td data-title="education">{{quiz.name}}</td>
+                                    <td data-title="edit"><a href="" class="icon icon-default transparent icon-ef-1 icon-ef-1b"  ng-click="subjectEditModel(quiz.id)"><i class="fa fa-pencil"></i></a></td>
+                                    <td data-title="delete"><a href="" class="icon icon-default transparent icon-ef-1 icon-ef-1b delete"  ng-click="showDeleteModel(quiz.id)"><i class="fa fa-archive"></i></a></td>
+                                    <td data-title="check">
+                                        <md-checkbox ng-model="quiz.active" aria-label="{{quiz.id}}" ng-click="changeQuizStatus(quiz.id,quiz.active)"></md-checkbox>
+                                    </td>
+                                    <td>
+                                        <a ui-sref="app.exam-type({eId:eId,qId:quiz.id})">View <i class="fa fa-arrow-right"></i></a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </md-whiteframe>
+            </div>
+        </div>
+    </section>
+    <div class="modal fade modal-ext" id="new_subject" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" name="newQuiz">
+        <div class="modal-dialog" role="document">
+            <!--Content-->
+            <div class="modal-content">
+                <div class="modal-body">
+                    <form name="createQuizForm">
+                        <div class="education">
+                            <h1 class="custom-font"><strong>Subject</strong></h1>
+                            <md-input-container class="md-block" flex-gt-sm ng-hide="isEnabled >'0'">
+                                <input type="text" ng-model="name" name="name" placeholder="Create a new Education" required>
+                                <div class="errors" ng-messages="createEduForm.name.$error">
+                                    <div ng-message="required">Subject Name Required</div>
+                                </div>
+                            </md-input-container>
+                            <div class="file_upload">
+                                <md-input-container class="md-block" flex-gt-sm>
+                                    <img ngf-src="image" class="thumb" style="width: 50px; height: 50px;">
+                                    <input type="file" ng-model="image" name="image" ngf-select required accept="image/png">
+                                    <md-button class="md-raised md-primary">Upload</md-button>
+                                    <div class="errors" ng-messages="catCreate.image.$error">
+                                        <div ng-message="required">Image required</div>
+                                    </div>
+                                </md-input-container>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <md-button type="button" class="md-raised md-warn modal_save pull-right" data-dismiss="modal" ng-click="cancel()" >Cancel</md-button>
+                <md-button type="button" class="md-raised modal_save pull-right" data-dismiss="modal" ng-click="createQuiz()" ng-disabled="!(name && image)" style="background: rgb(3, 175, 91);color: rgba(255, 255, 255, 0.87);">Save</md-button>
+            </div>
+        </div>
+        <!--/.Content--> 
+    </div>
+    <script id="subjectEditModel.html" type="text/ng-template">
+        <div class="modal-ext quiz_library" id="edit_subject">
+            <div class="modal-main">
+                <!--Content-->
+                <div class="content-main">
+                    <form name="createEduForm">
+                        <div class="modal-body">
+                            <div class="education">
+                                <h1 class="custom-font"><strong>Subject</strong></h1>
+                                <md-input-container class="md-block" flex-gt-sm ng-hide="isEnabled >'0'">
+                                    <input type="text" ng-model="sub.name" name="sub.name" placeholder="Create a new Subject" required>
+                                    <div class="errors" ng-messages="createEduForm.name.$error">
+                                        <div ng-message="required">Subject Name Required</div>
+                                    </div>
+                                </md-input-container>
+                                <div class="file_upload">
+                                    <img ng-hide="image" ng-src="{{sub.imageUrl}}" style="width: 50px; height: 50px;">
+                                    <img ngf-src="image" class="thumb" style="width: 50px; height: 50px;">
+                                    <input type="file" ng-model="image" name="image" ngf-select accept="image/png">
+                                    <md-button class="md-raised md-primary">Upload</md-button>
+                                </div>
+                            </div>
+                        </div>
+                        <md-button type="button" class="md-raised md-warn modal_save pull-right" data-dismiss="modal" ng-click="cancel()">Cancel</md-button>
+                        <md-button type="button" class="md-raised md-primary modal_save pull-right" data-dismiss="modal" ng-click="updateSubject(sub.id)" style="background: rgb(3, 175, 91);color: rgba(255, 255, 255, 0.87);">Save</md-button>
+                    </form>
+                </div>
+            </div>
+            <!--/.Content-->
+        </div>
+    </script>
+    <script id="subjectDeleteModel.html" type="text/ng-template">
+        <div class="modal-ext quiz_library" id="edit_subject">
+            <div class="modal-main">
+                <!--Content-->
+                <div class="content-main">
+                    <div class="modal-body">
+                        <h1 class="custom-font"><strong>Confirm that you want to delete this and all its content?</strong></h1>
+                        <span>(This action can't be reversed)</span>
+                    </div>
+                    <div class="action_btn">
+                        <md-button type="button" class="md-raised md-primary modal_save" data-dismiss="modal" ng-click="cancel()" style="background: rgb(3, 175, 91);color: rgba(255, 255, 255, 0.87);">Keep</md-button>
+                        <md-button type="button" class="md-raised md-primary modal_save confirm md-warn" data-dismiss="modal" ng-click="ok(subId)">Delete</md-button>
+                    </div>
+                </div>
+            </div>
+            <!--/.Content-->
+        </div>
+    </script>
+</div>

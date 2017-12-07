@@ -1,0 +1,68 @@
+<div class="col-sm-4 col-md-4">
+    <div class="Sidebar" ng-controller="sidebarController as sidebar">
+        <div class="Panels">
+            <div class="Panels-header">
+                <div class="profile_home">
+                <div class="battle_profile profile_cover">
+                    <div class="profile_border_lose"></div>
+                    <div class="img_cover"><img ng-src="{{userDetails.picture || defaultUser}}"></div>
+                </div>
+            </div>
+            </div>
+            <div class="Panels-content">
+                <div class="Sidebar-content">
+                    <p class="Sidebar-content-title">{{userDetails.FirstName}} {{userDetails.LastName}}</p>
+                    <p class="Sidebar-content-subtitle"  ng-if="userDetails.occupation.name == 'Gymnasieelev' || userDetails.occupation.name == 'Gymnasielærer' || userDetails.occupation.name == 'Rektor på ungdomsuddannelse' || userDetails.occupation.name == 'Vicerektor på ungdomsuddannelse'">{{userDetails.institution.name}}</p>
+                    <div class="Sidebar-points">
+                        <div class="Sidebar-points-content">
+                            <p class="total">Samlede point:</p>
+                            <p class="number">{{ userDetails.points }}</p>
+                        </div>
+                    </div>
+                    
+                    <div class="Sidebar-progressBar">
+                        <div ng-if="userDetails.occupation.name == 'Gymnasieelev' || userDetails.occupation.name == 'Gymnasielærer' || userDetails.occupation.name == 'Rektor på ungdomsuddannelse' || userDetails.occupation.name == 'Vicerektor på ungdomsuddannelse'">
+                            <p>Gymnasie rang</p>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <p><strong>{{ cmnSchoolRank }}</strong></p>
+                                </div>
+                                <div class="col-md-10">
+                                    <div class="progress">
+                                        <div class="progress-bar-danger progress-bar" style="width: {{usrSchoolProgress}}%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <p>Regional rang</p>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <p><strong>{{ cmnRegionalRank }}</strong></p>
+                                </div>
+                                <div class="col-md-10">
+                                    <div class="progress">
+                                        <div class="progress-bar-success progress-bar" style="width: {{usrRegionalProgress}}%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <p>National rang</p>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <p><strong>{{ cmnNationalRank }}</strong></p>
+                                </div>
+                                <div class="col-md-10">
+                                    <div class="progress">
+                                        <div class="progress-bar-info progress-bar" style="width: {{usrNationalProgress}}%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

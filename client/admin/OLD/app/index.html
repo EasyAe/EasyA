@@ -1,0 +1,165 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <title>Edootech admin</title>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible"
+          content="IE=edge">
+    <meta name="description"
+          content="">
+    <meta name="keywords"
+          content="">
+
+    <!-- Enable all requests and inline styles for painless development.
+TODO configure more restrictive Content-Security-Policy
+@see http://content-security-policy.com/
+@see http://www.html5rocks.com/en/tutorials/security/content-security-policy/ -->
+    <meta http-equiv="Content-Security-Policy"
+          content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
+
+    <!-- build:css({.tmp,app}) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
+    <link rel="stylesheet" href="bower_components/ngToast/dist/ngToast.css" />
+    <link rel="stylesheet" href="bower_components/pickadate/lib/themes/default.css" />
+    <link rel="stylesheet" href="bower_components/pickadate/lib/themes/default.date.css" />
+    <link rel="stylesheet" href="bower_components/pickadate/lib/themes/default.time.css" />
+    <link rel="stylesheet" href="bower_components/bootstrap-css-only/css/bootstrap.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css({.tmp,app}) styles/main.css -->
+    <link rel="stylesheet"
+          href="styles/main.css"/>
+    <!-- endbuild -->
+</head>
+
+<body ng-app="edootechAdmin">
+
+<main ui-view></main>
+
+
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.</p>
+<![endif]-->
+
+
+<!-- build:js({.tmp,app}) scripts/oldieshim.js -->
+<!--[if lt IE 9]>
+<script src="bower_components/es5-shim/es5-shim.js"></script>
+<script src="bower_components/json3/lib/json3.js"></script>
+<![endif]-->
+<!-- endbuild -->
+
+<!-- build:js({.tmp,app}) scripts/vendor.js defer -->
+<!-- bower:js -->
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-aria/angular-aria.js"></script>
+<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="bower_components/angular-messages/angular-messages.js"></script>
+<script src="bower_components/angular-material/angular-material.js"></script>
+<script src="bower_components/ngToast/dist/ngToast.js"></script>
+<script src="bower_components/tv4/tv4.js"></script>
+<script src="bower_components/objectpath/lib/ObjectPath.js"></script>
+<script src="bower_components/angular-schema-form/dist/schema-form.js"></script>
+<script src="bower_components/angular-schema-form/dist/bootstrap-decorator.js"></script>
+<script src="bower_components/angular-smart-table/dist/smart-table.js"></script>
+<script src="bower_components/ngstorage/ngStorage.js"></script>
+<script src="bower_components/pickadate/lib/picker.js"></script>
+<script src="bower_components/pickadate/lib/picker.date.js"></script>
+<script src="bower_components/pickadate/lib/picker.time.js"></script>
+<script src="bower_components/angular-schema-form-datepicker/bootstrap-datepicker.min.js"></script>
+<script src="bower_components/tx-tinymce/tx-tinymce.js"></script>
+<script src="bower_components/tinymce/tinymce.js"></script>
+<script src="bower_components/angular-schema-form-tinymce/bootstrap-tinymce.min.js"></script>
+<!-- endbower -->
+<!-- endbuild -->
+
+<!-- build:js({.tmp,app}) scripts/scripts.js defer -->
+<!-- inject:js -->
+<script src="scripts/_app.js"></script>
+<script src="scripts/aaal/_aaal.js"></script>
+<script src="scripts/aaal/aaal-routes.js"></script>
+<script src="scripts/aaal/components/aaal-header/aaal-header-d.js"></script>
+<script src="scripts/aaal/components/aaal-nav-list/aaal-nav-list-constant.js"></script>
+<script src="scripts/aaal/components/aaal-nav-list/aaal-nav-list-d.js"></script>
+<script src="scripts/aaal/components/aaal-overview-table/aaal-overview-table-d.js"></script>
+<script src="scripts/aaal/components/auth/auth-f.js"></script>
+<script src="scripts/aaal/components/auth/auth-interceptor-f.js"></script>
+<script src="scripts/aaal/components/auth/login/login-d.js"></script>
+<script src="scripts/aaal/global-filters/flexible-filter.js"></script>
+<script src="scripts/aaal/global-services/aaal-model-definitions-constant.js"></script>
+<script src="scripts/aaal/global-services/aaal-to-schema-form-f.js"></script>
+<script src="scripts/aaal/global-services/lb-services-s.js"></script>
+<script src="scripts/aaal/routes/answer/answer-edit-c.js"></script>
+<script src="scripts/aaal/routes/answer/answer-list-c.js"></script>
+<script src="scripts/aaal/routes/answer/answer-view-c.js"></script>
+<script src="scripts/aaal/routes/bootcamp/bootcamp-edit-c.js"></script>
+<script src="scripts/aaal/routes/bootcamp/bootcamp-list-c.js"></script>
+<script src="scripts/aaal/routes/bootcamp/bootcamp-view-c.js"></script>
+<script src="scripts/aaal/routes/bootcamp-resolved/bootcamp-resolved-edit-c.js"></script>
+<script src="scripts/aaal/routes/bootcamp-resolved/bootcamp-resolved-list-c.js"></script>
+<script src="scripts/aaal/routes/bootcamp-resolved/bootcamp-resolved-view-c.js"></script>
+<script src="scripts/aaal/routes/city/city-edit-c.js"></script>
+<script src="scripts/aaal/routes/city/city-list-c.js"></script>
+<script src="scripts/aaal/routes/city/city-view-c.js"></script>
+<script src="scripts/aaal/routes/container/container-edit-c.js"></script>
+<script src="scripts/aaal/routes/container/container-list-c.js"></script>
+<script src="scripts/aaal/routes/container/container-view-c.js"></script>
+<script src="scripts/aaal/routes/country/country-edit-c.js"></script>
+<script src="scripts/aaal/routes/country/country-list-c.js"></script>
+<script src="scripts/aaal/routes/country/country-view-c.js"></script>
+<script src="scripts/aaal/routes/education-type/education-type-edit-c.js"></script>
+<script src="scripts/aaal/routes/education-type/education-type-list-c.js"></script>
+<script src="scripts/aaal/routes/education-type/education-type-view-c.js"></script>
+<script src="scripts/aaal/routes/exam-type/exam-type-edit-c.js"></script>
+<script src="scripts/aaal/routes/exam-type/exam-type-list-c.js"></script>
+<script src="scripts/aaal/routes/exam-type/exam-type-view-c.js"></script>
+<script src="scripts/aaal/routes/institution/institution-edit-c.js"></script>
+<script src="scripts/aaal/routes/institution/institution-list-c.js"></script>
+<script src="scripts/aaal/routes/institution/institution-view-c.js"></script>
+<script src="scripts/aaal/routes/level/level-edit-c.js"></script>
+<script src="scripts/aaal/routes/level/level-list-c.js"></script>
+<script src="scripts/aaal/routes/level/level-view-c.js"></script>
+<script src="scripts/aaal/routes/occupation/occupation-edit-c.js"></script>
+<script src="scripts/aaal/routes/occupation/occupation-list-c.js"></script>
+<script src="scripts/aaal/routes/occupation/occupation-view-c.js"></script>
+<script src="scripts/aaal/routes/question/question-edit-c.js"></script>
+<script src="scripts/aaal/routes/question/question-list-c.js"></script>
+<script src="scripts/aaal/routes/question/question-view-c.js"></script>
+<script src="scripts/aaal/routes/question-type/question-type-edit-c.js"></script>
+<script src="scripts/aaal/routes/question-type/question-type-list-c.js"></script>
+<script src="scripts/aaal/routes/question-type/question-type-view-c.js"></script>
+<script src="scripts/aaal/routes/quiz/quiz-edit-c.js"></script>
+<script src="scripts/aaal/routes/quiz/quiz-list-c.js"></script>
+<script src="scripts/aaal/routes/quiz/quiz-view-c.js"></script>
+<script src="scripts/aaal/routes/region/region-edit-c.js"></script>
+<script src="scripts/aaal/routes/region/region-list-c.js"></script>
+<script src="scripts/aaal/routes/region/region-view-c.js"></script>
+<script src="scripts/aaal/routes/sub-category/sub-category-edit-c.js"></script>
+<script src="scripts/aaal/routes/sub-category/sub-category-list-c.js"></script>
+<script src="scripts/aaal/routes/sub-category/sub-category-view-c.js"></script>
+<script src="scripts/aaal/routes/subject/subject-edit-c.js"></script>
+<script src="scripts/aaal/routes/subject/subject-list-c.js"></script>
+<script src="scripts/aaal/routes/subject/subject-view-c.js"></script>
+<script src="scripts/aaal/routes/user-details/user-details-edit-c.js"></script>
+<script src="scripts/aaal/routes/user-details/user-details-list-c.js"></script>
+<script src="scripts/aaal/routes/user-details/user-details-view-c.js"></script>
+<script src="scripts/aaal/routes/users/users-edit-c.js"></script>
+<script src="scripts/aaal/routes/users/users-list-c.js"></script>
+<script src="scripts/aaal/routes/users/users-view-c.js"></script>
+<script src="scripts/routes.js"></script>
+<!-- endinject -->
+<!-- endbuild -->
+</body>
+</html>
+
+

@@ -1,0 +1,15 @@
+.BannerAd{
+  margin-top: 20px;
+  background-color: $gray-bg;
+  padding: 30px;
+  border-radius: 0 0 8px 8px;
+
+  &-content{
+    min-height: 123px;
+    background: url('/assets/images/bannerAd.png') no-repeat;
+    background-size: contain;
+  }
+
+
+
+}

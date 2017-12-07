@@ -1,0 +1,31 @@
+.SectionStars{
+  position: relative;
+  color: $gray-text-dark;
+  font-weight: bold;
+  font-size: 30px;
+  text-align: center;
+
+  &-content{
+    &:before {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      display: block;
+      content: "";
+      width: 24px;
+      height: 24px;
+      transform: translateY(-50%);
+    }
+
+    &:after {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      display: block;
+      content: "";
+      width: 24px;
+      height: 24px;
+      transform: translateY(-50%);
+    }
+  }
+}

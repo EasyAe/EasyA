@@ -1,0 +1,134 @@
+{
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "./models"
+    ],
+    "mixins": [
+      "loopback/common/mixins",
+      "loopback/server/mixins",
+      "../common/mixins",
+      "./mixins"
+    ]
+  },
+  "User": {
+    "dataSource": "db",
+    "public": false
+  },
+  "AccessToken": {
+    "dataSource": "db",
+    "public": false
+  },
+  "ACL": {
+    "dataSource": "db",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "db",
+    "public": false
+  },
+  "Role": {
+    "dataSource": "db",
+    "public": false
+  },
+  "UserDetails": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Institution": {
+    "dataSource": "db",
+    "public": true
+  },
+  "City": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Region": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Country": {
+    "dataSource": "db",
+    "public": true
+  },
+  "EducationType": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Quiz": {
+    "dataSource": "db",
+    "public": true
+  },
+  "ExamType": {
+    "dataSource": "db",
+    "public": true
+  },
+  "subCategory": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Question": {
+    "dataSource": "db",
+    "public": true
+  },
+  "QuestionType": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Answer": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Occupation": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Bootcamp": {
+    "dataSource": "db",
+    "public": true
+  },
+  "users": {
+    "dataSource": "db",
+    "public": true,
+    "options": {
+      "emailVerificationRequired": true
+    }
+  },
+  "BootcampResolved": {
+    "dataSource": "db",
+    "public": true
+  },
+  "container": {
+    "dataSource": "amazonS3",
+    "public": true
+  },
+  "Email": {
+    "dataSource": "EmailDataSource"
+  },
+  "Game": {
+    "dataSource": "db",
+    "public": true
+  },
+  "GamePlay": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Points": {
+    "dataSource": "db",
+    "public": true
+  },
+  "QuestionPoints": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Banner": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Theme": {
+    "dataSource": "db",
+    "public": true
+  }
+}

@@ -1,0 +1,49 @@
+<div ng-include src="'scripts/app/views/include/header.html'"></div>
+<div class="container bootcamp_list">
+    <div class="row">
+        <div ng-include src="'scripts/app/views/include/sidebar.html'"></div>
+        <div class="col-sm-8 col-md-8">
+            <div class="Battle" ng-controller="bootCampCtrl as battle">
+                <div class="Panels">
+                    <div class="Panels-header">
+                        <div class="Battle-header">
+                            <p class="Battle-title">
+                                Velkommen til Bootcamp!
+                            </p>
+                        </div>
+                    </div>
+                    <div class="Panels-content">
+                        <div class="Battle-content">
+                             <div class="Battle-list">
+                                <div class="Battle-listImg">
+                                    <img ng-src="./assets/images/battles/type1.png" alt="Icon battle">
+                                </div>
+                                <div class="Battle-listName">
+                                    <p>Se dine forkerte svar</p>
+                                </div>
+                                <span class="badge bcamp">{{bootcampCount}}</span>
+                                <div class="Battle-listAction">
+                                    <a ng-href="#bootcamp-sedine"><span>Vælg </span><i class="fa fa-check-circle-o" aria-hidden="true"></i></a>
+                                </div>
+                            </div>
+                            <!-- <div class="Battle-list">
+                                <div class="Battle-listImg">
+                                    <img ng-src="./assets/images/battles/type2.png" alt="Icon battle">
+                                </div>
+                                <div class="Battle-listName">
+                                    <p>Spil mod dig selv</p>
+                                </div>
+                                <div class="Battle-listAction">
+                                    <a ng-href="#battle"><span>Select </span><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                                </div>
+                            </div> -->
+                        </div>
+                        <div class="BannerAd">
+                            <a href="{{adUrl}}" target="blank"><img ng-src="{{adImage}}" ></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

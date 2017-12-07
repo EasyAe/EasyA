@@ -1,0 +1,58 @@
+<div ng-include src="'scripts/app/views/include/header.html'"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <div class="Battle" ng-controller="bootCampSedineCtrl">
+                <div class="Panels">
+                    <div class="Panels-header">
+                        <div class="Battle-header">
+                            <p class="Battle-title">
+                                <a href="#bootcamp"><i class="fa fa-arrow-left pull-left" aria-hidden="true"></i></a> Se dine forkerte svar
+                            </p>
+                        </div>
+                    </div>
+                    <div class="Panels-content">
+                        <div class="Battle-content sedine">
+                            <div class='spinner' ng-show="loadData">
+                                <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+                            </div>
+                            <div infinite-scroll='loadMore()' infinite-scroll-distance='2' ng-init="limit=15;" >
+                            <p ng-if="errMsg" class="errMsg">Ingen forkerte svar du!</p>
+                                <table class="table" ng-show="dataHeader">
+                                    <thead>
+                                        <tr ng-if="!errMsg">
+                                            <th>&nbsp;</th>
+                                            <th>Spørgsmål</th>
+                                            <th>Dato</th>
+                                            <th>Emne</th>
+                                            <th>Eksamenstype</th>
+                                            <th>Subcategory</th>
+                                            <th>&nbsp;</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="btcmp_qstns" ng-repeat="item in bootCamp | orderBy:'-date' | limitTo: limit" >
+                                            <td ng-if="item.resolved == false"><img ng-src="assets/images/close.png" alt="Delete"></td>
+                                            <td ng-if="item.resolved == false">{{item.bootcamp.question.name}}</td>
+                                            <td ng-if="item.resolved == false">{{item.date | date}}</td>
+                                            <td ng-if="item.resolved == false">{{item.bootcamp.question.subCategory.examType.quiz.name}}</td>
+                                            <td ng-if="item.resolved == false">{{item.bootcamp.question.subCategory.examType.name}}</td>
+                                            <td ng-if="item.resolved == false">{{item.bootcamp.question.subCategory.name}}</td>
+                                            <td ng-if="item.resolved == false">
+                                                <div class="Battle-listActionTble"><a ng-href="" ng-click="btcmpExplain(item.id);"><span>Check&nbsp;Answer </span><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,147 @@
+<div ng-include src="'scripts/app/views/include/header.html'"></div>
+<div class="container battle_align">
+    <div class="row">
+        <div ng-include src="'scripts/app/views/include/sidebar.html'"></div>
+
+        <div class="col-sm-8 col-md-8">
+            <div class="Battle" ng-controller="battleController">
+
+                <!-- <input type="button" value="Remove Cookie" ng-click="RemoveCookie()" /> -->
+                <!-- ng-switch choose subject starts -->
+                <div ng-if="subject == true">
+                    <div class="Panels">
+                        <div class="Panels-header">
+                            <div class="Battle-header">
+                                <p class="Battle-title">
+                                    "Let's Battle - Vælg et enme
+                                </p>
+                                <div ng-if="opntTimer == true">
+                                    <h3 class="battlefriendTimer"><timer countdown="5" max-time-unit="'second'" interval="1000">{{sseconds}}</timer></h3>
+                                </div>
+                                <!-- <input type="button" value="Accept" ng-click="battleAccepted()" /> -->
+                            </div>
+                        </div>
+                        <div class="Panels-content">
+                            <div class="Battle-content">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <md-select ng-model="eduFilter" placeholder="Emne">
+                                            <md-option ng-repeat="list in quizList | unique: 'educationType.name'" value="{{list.name}}" ng-if="list.active == true">{{list.name}}</md-option>
+                                            <md-option value="!!">All Emne</md-option>
+                                        </md-select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <md-select ng-model="eduFilter" placeholder="Udannelse">
+                                            <md-option ng-repeat="list in quizList | unique: 'educationType.name'" value="{{list.educationType.name}}" ng-if="list.active == true">{{list.educationType.name}}</md-option>
+                                            <md-option value="!!">All Udannelse</md-option>
+                                        </md-select>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr class="eduFilter">
+                            <div class="Battle-content">
+                                <div ng-repeat="list in quizList | filter:eduFilter">
+                                    <div class="Battle-list" ng-if="list.active == true">
+                                        <div class="Battle-listImg">
+                                            <img ng-src="{{list.imageUrl || defaultImg}}" alt="Icon battle">
+                                        </div>
+                                        <div class="Battle-listName">
+                                            <p>{{ list.name }}</p>
+                                            <p class="content">{{ list.educationType.name }}</p>
+                                        </div>
+                                        <div class="Battle-listAction">
+                                            <a ng-href="" ng-click="battleType();selectSubject(list.id);"><span>Vælg </span><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="BannerAd">
+                                <div class="BannerAd-content"></div>
+                            </div> -->
+                            <div class="BannerAd">
+                                <a href="{{adUrl}}" target="blank"><img ng-src="{{adImage}}" ></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ng-switch choose subject ends -->
+                <!-- ng-switch choose type starts -->
+                <div ng-if="type==true">
+                    <div class="Panels">
+                        <div class="Panels-header">
+                            <div class="Battle-header">
+                                <p class="Battle-title">
+                                    <a href="" ng-click="battleSubject();"><i class="fa fa-arrow-left pull-left" aria-hidden="true"></i></a>Battle Type
+                                </p>
+                                <div ng-if="opntTimer == true">
+                                    <h3 class="battlefriendTimer"><timer countdown="5" max-time-unit="'second'" interval="1000">{{sseconds}}</timer></h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="Panels-content">
+                            <div class="Battle-content">
+                                <div class="Battle-list" ng-repeat="list in battleTypes | filter:battleTypeFilter">
+                                    <div class="Battle-listImg">
+                                        <img ng-src="{{list.imageUrl}}" alt="Icon battle">
+                                    </div>
+                                    <div class="Battle-listName">
+                                        <p>{{ list.name }}</p>
+                                        <p class="content">{{ list.instructions }}</p>
+                                    </div>
+                                    <div class="Battle-listAction">
+                                        <a ng-href="" ng-click="battleCategory();selectBattleType(list.id);"><span>Vælg </span><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="BannerAd">
+                                <div class="BannerAd-content"></div>
+                            </div> -->
+                            <!-- <div class="BannerAd">
+                                <a href="{{battleUrl}}" target="blank"><img ng-src="{{battleBanner}}" ></a>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+                <!-- ng-switch choose type ends -->
+                <!-- ng-switch choose category starts -->
+                <div ng-if="category == true">
+                    <div class="Panels">
+                        <div class="Panels-header">
+                            <div class="Battle-header">
+                                <p class="Battle-title">
+                                    <a href="" ng-click="battleType();"><i class="fa fa-arrow-left pull-left" aria-hidden="true"></i></a> Battle delemne
+                                </p>
+                                <div ng-if="opntTimer == true">
+                                    <h3 class="battlefriendTimer"><timer countdown="5" max-time-unit="'second'" interval="1000">{{sseconds}}</timer></h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="Panels-content">
+                            <div class="Battle-content">
+                                <div class="Battle-list" ng-repeat="list in subCategories | filter:subCategoryFilter">
+                                    <div class="Battle-listImg">
+                                        <img ng-src="{{list.imageUrl}}" alt="Icon battle">
+                                    </div>
+                                    <div class="Battle-listName">
+                                        <p>{{ list.name }}</p>
+                                    </div>
+                                    <div class="Battle-listAction active">
+                                        <a ng-href="" ng-click="chooseOpponent();selectSubCategory(list.id);"><span>Let's Battle</span> <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="BannerAd">
+                                <div class="BannerAd-content"></div>
+                            </div> -->
+                            <!-- <div class="BannerAd">
+                                <a href="{{battleUrl}}" target="blank"><img ng-src="{{battleBanner}}" ></a>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+                <!-- ng-switch choose category ends -->
+            </div>
+        </div>
+    </div>
+</div>
+</div>

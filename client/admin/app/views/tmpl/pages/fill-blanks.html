@@ -1,0 +1,149 @@
+<div class="page quiz_library exam_type question_page">
+    <section class="tile mfp-hide" fullscreen="isFullscreen01">
+        <!-- tile header -->
+        <div class="tile-header dvd dvd-btm">
+            <h1 class="custom-font"><strong>Fill in the blanks</strong></h1>
+        </div>
+        <!-- /tile header -->
+        <div layout="row">
+            <div class="col-xs-12 add_education">
+                <a href="" class="icon icon-default pull-right" data-toggle="modal" data-target="#add_question"><i class="fa fa-plus"></i></a>
+            </div>
+        </div>
+        <div layout="row">
+            <div class="col-xs-12">
+                <div class="col-xs-6">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <input ng-model="searchquestion" id="search" placeholder="Subcategory / Question name">
+                    </md-input-container>
+                </div>
+                <div class="col-xs-6">
+                    <md-select ng-model="pageSize" id="pageSize" placeholder="Subject" class="md-no-underline" required md-no-asterisk="false">
+                        <md-option ng-repeat="option in options" value="{{option.value}}">{{option.value}}</md-option>
+                    </md-select>
+                </div>
+            </div>
+        </div>
+        <div layout="row">
+            <div class="col-xs-12">
+                <div class="col-xs-6 checkbx">
+                    <md-checkbox ng-model="data.cb1" aria-label="Checkbox 1"></md-checkbox>- Level 11 question
+                </div>
+            </div>
+        </div>
+        <div layout="row">
+            <div class="col-xs-12">
+                <div class="col-xs-6">
+                    <md-input-container class="md-block">
+                        <label>Answer instruction:</label>
+                        <textarea ng-model="user.biography" md-maxlength="150" rows="3" md-select-on-focus></textarea>
+                    </md-input-container>
+                </div>
+            </div>
+        </div>
+        <div layout="row">
+            <div class="col-xs-6">
+                <md-button class="md-raised md-primary">Upload front picture</md-button>
+                <br>
+                <h3 class="tip">Bootcamp title:</h3>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <input ng-model="searchquestion" id="search" placeholder="">
+                </md-input-container>
+            </div>
+        </div>
+        <div layout="row">
+            <div class="col-xs-12">
+                <h3 class="tip">Bootcamp tip:</h3>
+                <md-button class="md-raised md-primary">Upload</md-button>
+                <br>
+                <img ng-src="images/u2323.png" class="mrgn-botm">
+            </div>
+        </div>
+        <div layout="row">
+            <div class="col-xs-12">
+                <h3 class="tip">Step by step solution</h3>
+                <md-button class="md-raised md-primary">Upload</md-button>
+                <br>
+                <img ng-src="images/u2323.png" class="mrgn-botm">
+            </div>
+        </div>
+        <div>
+            <div class="col-xs-12">
+                <h3 class="tip">Bootcamp theory</h3>
+                <md-button class="md-raised md-primary">Upload</md-button>
+                <br>
+                <img ng-src="images/u1571.png" class="mrgn-botm">
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-md-6">
+                <md-checkbox ng-model="data.cb1" aria-label="Checkbox 1"></md-checkbox> I have filled out all the information correctly
+                <md-button class="md-raised md-primary pull-right">Upload</md-button>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </section>
+    <div class="modal fade modal-ext" id="new_subject" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <!--Content-->
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h1 class="custom-font"><strong>Create new Sub Category</strong></h1>
+                    <p class="create_pluse">Fill in the name for the new sub category. Upload a picture and save it.</p>
+                    <div class="file_upload">
+                        <img ng-src="images/pers.png">
+                        <input type="file" name="">
+                        <md-button class="md-raised md-primary">Upload</md-button>
+                    </div>
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <input type="text" ng-model="subject" placeholder="create a new Subject">
+                    </md-input-container>
+                </div>
+                <md-button type="button" class="md-raised md-primary pull-right" data-dismiss="modal">Save</md-button>
+            </div>
+        </div>
+        <!--/.Content-->
+    </div>
+    <div class="modal fade modal-ext" id="add_question" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <!--Content-->
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h1 class="custom-font"><strong>Pick the wanted catacory for the new question</strong></h1>
+                    <div layout="row">
+                        <div class="col-xs-6">
+                            <button data-dismiss="modal" ui-sref="app.exam-type" class="btn btn-ef btn-ef-2 btn-ef-2-primary btn-ef-2a mb-10">Multiple Choice</button>
+                        </div>
+                        <div class="col-xs-6">
+                            <button class="btn btn-ef btn-ef-2 btn-ef-2-primary btn-ef-2a mb-10">Puzzle</button>
+                        </div>
+                    </div>
+                    <div layout="row">
+                        <div class="col-xs-6">
+                            <button class="btn btn-ef btn-ef-2 btn-ef-2-primary btn-ef-2a mb-10">Fill in the blanks</button>
+                        </div>
+                        <div class="col-xs-6">
+                            <button class="btn btn-ef btn-ef-2 btn-ef-2-primary btn-ef-2a mb-10">Drag and drop</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/.Content-->
+    </div>
+    <div class="modal fade modal-ext" id="delete_subject" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <!--Content-->
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h1 class="custom-font"><strong>Confirm that you want to delete this and all its content?</strong></h1>
+                    <span>(This action can't be reversed)</span>
+                </div>
+                <div class="action_btn">
+                    <md-button type="button" class="md-raised md-primary modal_save" data-dismiss="modal">Keep</md-button>
+                    <md-button type="button" class="md-raised md-primary modal_save confirm" data-dismiss="modal">Confirm</md-button>
+                </div>
+            </div>
+        </div>
+        <!--/.Content-->
+    </div>
+</div>

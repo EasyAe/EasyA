@@ -1,0 +1,55 @@
+<div id="choose_opponent">
+    <div class="modal-main">
+        <!-- Modal content-->
+        <div class="content-main">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="modalClose();">&times;</button>
+                <h4 class="modal-title">Vælg en modstander</h4>
+            </div>
+            <div class="modal-body">
+                <div class="popup_battle_opponent" ng-if="alreadyInGame == false">
+                    <div class="btns_random">
+                        <button class="button_random_opponent" data-dismiss="modal" data-backdrop="false" ng-click="randomOpponent($event);" ng-disabled="randomDisable">Tilfældig modstander</button>
+                        <button class="button_finda_friend" ng-click="showDiv()">Find en ven <span ng-if="family == false"><i class="fa fa-angle-up" aria-hidden="true"></i></span><span ng-if="family == true"><i class="fa fa-angle-down" aria-hidden="true"></i></span></button>
+                    </div>
+                    <div class="scroll" ng-show="family">
+                        <input type="text" name="search" placeholder="SEARCH" class="search_random" ng-model="search">
+                        <hr>
+                        <div class="Submenu">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <!-- <th>Rank</th> -->
+                                        <th></th>
+                                        <th>Navn</th>
+                                        <th>Uddannelsessted</th>
+                                        <th>Stilling</th>
+                                        <th>Score</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="allUserDetail in allUserDetails | filter:search">
+                                        <!-- <td></td> -->
+                                        <td>
+                                            <div class="battle_profile profile_cover_frnd">
+                                                <div class="profile_border_frnd"></div>
+                                                <div class="img_cover_frnd"><img ng-src="{{allUserDetail.picture}}"></div>
+                                            </div>
+                                        </td>
+                                        <td><a ng-click="challenge(allUserDetail.usersId)">{{allUserDetail.FirstName}}</a></td>
+                                        <td>{{allUserDetail.institution.name}}</td>
+                                        <td>{{allUserDetail.occupation.name}}</td>
+                                        <td>{{allUserDetail.points}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="opponent-error" ng-if="alreadyInGame == true">
+                     <h3>{{alreadyInGameError}}</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

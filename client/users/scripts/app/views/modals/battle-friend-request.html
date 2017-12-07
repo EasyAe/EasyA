@@ -1,0 +1,41 @@
+<!--create user modal-->
+<div id="rematch">
+    <div class="modal-main">
+        <!-- Modal content-->
+        <div class="content-main">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="modalClose();">&times;</button>
+                <p ng-if="rematchId != 'false'">Bekræft kamp</p>
+                <p ng-if="rematchId == 'false'">Match Declination</p>
+            </div>
+            <div class="modal-body">
+                <div class="result_cir player circle_inner">
+                    <div class="profile_cover">
+                        <div class="profile_border_lose"></div>
+                        <div class="opponent_img img_cover">
+                            <img ng-src="{{rematchOpnt.picture}}">
+                        </div>
+                    </div>
+                    <h2>{{rematchOpnt.FirstName}} {{rematchOpnt.LastName}}</h2>
+                </div>
+                <div class="popup_battle2">
+                    <div class="answer_option">
+                        <h3 ng-if="rematchId != 'false'">Er du klar til at kæmpe?</h3>
+                        <h3 ng-if="rematchId == 'false'">Sorry I can't play right now!</h3>
+                    </div>
+                    <div ng-if="rematchId != 'false'" class="button_popup">
+                        <div>
+                            <button class="button_decline_battle2" ng-click="modalClose();declineBattle(rematchId);">Afvis</button>
+                        </div>
+                        <div>
+                            <button class="button_accept_battle2" ng-click="battleAccept(rematchId);">Accepter</button>
+                        </div>
+                    </div>
+                    <div ng-if="rematchId == 'false'" class="button_popup">
+                        <button class="btn btn-success btn_close_rematch" ng-click="modalClose();">Ok</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

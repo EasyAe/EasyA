@@ -1,0 +1,157 @@
+<div class="page quiz_library exam_type question_page">
+    <section class="tile mfp-hide" fullscreen="isFullscreen01">
+        <!-- tile header -->
+        <div class="tile-header dvd dvd-btm">
+            <h1 class="custom-font"><strong>Fill in the blanks </strong></h1>
+        </div>
+        <!-- /tile header -->
+        <div layout="row">
+            <div class="col-xs-12 add_education">
+            </div>
+        </div>
+        <form name="puzzle">
+            <div layout="row">
+                <div class="col-xs-12">
+                    <div class="col-xs-6">
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <input ng-model="questionName" name="questionName" id="search" placeholder="Subcategory / Question name" required>
+                            <div class="errors" ng-messages="puzzle.questionName.$error">
+                                <div ng-message="required">Question required</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                    <div class="col-xs-6">
+                        <md-input-container class="md-block">
+                            <label>Answer instruction:</label>
+                            <textarea ng-model="Instruction" name="questionName" md-maxlength="150" rows="3" md-select-on-focus required></textarea>
+                            <div class="errors" ng-messages="puzzle.questionName.$error">
+                                <div ng-message="required">Instruction required</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                </div>
+            </div>
+            <div layout="row">
+                <div class="col-xs-12">
+                    <div class="col-xs-6 checkbx">
+                        <md-checkbox ng-model="level11" aria-label="Checkbox 1"></md-checkbox>- Level 11 question
+                    </div>
+                </div>
+            </div>
+            
+            <div layout="row">
+                <div class="col-xs-12">
+                    <div class="file_upload">
+                        <md-input-container class="md-block">
+                            <input type="file" ng-model="questionImage" name="questionImage" ngf-select required>
+                            <md-button class="md-raised md-primary">Upload front picture</md-button>
+                            <div class="errors" ng-messages="puzzle.questionImage.$error">
+                                <div ng-message="required">Front Picture Required</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                    <img ngf-src="questionImage" class="mrgn-left" style="max-width: 500px;">
+                </div>
+            </div>
+            <div layout="row">
+                <div class="col-xs-12">
+                <h3>Write the sentences in the CORRECT order: </h3>
+                    <div class="col-xs-8">
+                        <input id="first" type="radio" name="content" ng-model="content" value="first">
+                        <label class="options">Text Answer</label>
+                        <input id="other" type="radio" name="content" ng-model="content" value="other">
+                        <label class="options">Picture Answer</label>
+                        <div class="option_table">
+                            <span>Please tick off the correct answer.</span>
+                            <div ng-init="content='first'">
+                                <table class="c_answer" ng-show="content == 'first'">
+                                    <tr ng-repeat="answer in tAnswers track by $index">
+                                        <td>
+                                            <md-checkbox ng-model="textAnsChoosed[answer.id]" ng-true-value="true" ng-false-value="false"></md-checkbox>
+                                        </td>
+                                        <td>{{ answer.id}}.</td>
+                                        <td>
+                                            <md-input-container>
+                                                <input id="{{answer.name}}" ng-model="textFilled[answer.id]" placeholder="">
+                                            </md-input-container>
+                                        </td>
+                                        <td><a href="" class="icon icon-default" ng-click="add()"><i class="fa fa-plus"></i></a></td>
+                                        <td><a href="" class="icon icon-default" ng-click="removeRow($index, content)"><i class="fa fa-times"></i></a></td>
+                                    </tr>
+                                </table>
+                                <table class="c_answer" ng-repeat="answer in pAnswers track by $index" ng-show="content == 'other'">
+                                    <tr>
+                                        <td>
+                                            <md-checkbox ng-model="textAnsChoosed[answer.id]" ng-true-value="true" ng-false-value="false"></md-checkbox>
+                                        </td>
+                                        <td>{{ answer.id}}.</td>
+                                        <td>
+                                            <div class="select_picture">
+                                                <label>Select a picture via the button</label>
+                                                <div class="file_upload">
+                                                    <input type="file" ng-model="textFilled[answer.id]" name="theoryImage" ngf-select>
+                                                    <md-button class="md-raised md-primary">Upload</md-button>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td><a href="" class="icon icon-default" ng-click="addPic()"><i class="fa fa-plus"></i></a></td>
+                                        <td><a href="" class="icon icon-default" ng-click="removeRowPic($index, content)"><i class="fa fa-times"></i></a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div layout="row">
+                <div class="col-xs-12">
+                    <div class="col-xs-6">
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <input ng-model="bootcampTitle" name="bootcampTitle" id="search" placeholder="Bootcamp title" required>
+                            <div class="errors" ng-messages="puzzle.bootcampTitle.$error">
+                                <div ng-message="required">Bootcamp Title Required</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                </div>
+            </div>
+            <div layout="row">
+                <div class="col-xs-12">
+                <h3 class="tip">Bootcamp tip:</h3>
+                    <div class="file_upload">
+                        <input type="file" ng-model="tipImage" name="tipImage" ngf-select>
+                        <md-button class="md-raised md-primary">Upload</md-button>
+                    </div>
+                    <img ngf-src="tipImage" class="mrgn-botm" style="max-width: 500px;">
+                </div>
+            </div>
+            <div layout="row">
+                <div class="col-xs-12">
+                <h3 class="tip">Step by step solution</h3>
+                    <div class="file_upload">
+                        <input type="file" ng-model="solutionImage" name="solutionImage" ngf-select>
+                        <md-button class="md-raised md-primary">Upload</md-button>
+                    </div>
+                    <img ngf-src="solutionImage" class="mrgn-botm" style="max-width: 500px;">
+                </div>
+            </div>
+            <div>
+                <div class="col-xs-12">
+                <h3 class="tip">Bootcamp theory</h3>
+                    <div class="file_upload">
+                        <input type="file" ng-model="theoryImage" name="theoryImage" ngf-select>
+                        <md-button class="md-raised md-primary">Upload</md-button>
+                    </div>
+                    <img ngf-src="theoryImage" class="mrgn-botm" style="max-width: 500px;">
+                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-6">
+                    <md-checkbox ng-model="infoCheck" name="infoCheck" aria-label="Checkbox 1" required></md-checkbox>
+                    I have filled out all the information correctly
+                    <md-button class="md-raised md-primary pull-right" ng-click="createQuestion()" ng-disabled="!(infoCheck && bootcampTitle && questionImage && questionName && Instruction)">Create</md-button>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </form>
+    </section>
+</div>

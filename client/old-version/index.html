@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Edootech</title>
+		<!-- <link rel="icon" type="image/png" href="app/images/image.png"/> -->
+		<link rel="stylesheet" type="text/css" href="./../node_modules/angular-material/angular-material.min.css">
+		<link rel="stylesheet" type="text/css" href="main.css">
+	</head>
+
+	<body ng-app="edootech" flex layout="column">
+
+		<div flex layout="column">
+		  <tool-bar ng-if="nav"></tool-bar>
+		  <div flex layout="row">
+			  <side-nav ng-if="nav"></side-nav>
+			  <div flex ui-view></div>
+		  <div>
+		</div>
+
+		<!-- Angular Material Dependencies -->
+		<script src="/../node_modules/angular/angular.js"></script>
+		<script src="/../node_modules/angular-animate/angular-animate.js"></script>
+		<script src="/../node_modules/angular-aria/angular-aria.min.js"></script>
+		<script src="/../node_modules/angular-material/angular-material.js"></script>
+		<script src="/../node_modules/angular-ui-router/release/angular-ui-router.js"></script>
+
+		<script type="text/javascript" src="app.js"></script>
+
+		<script type="text/javascript" src="ctrls/authCtrl.js"></script>
+		<script type="text/javascript" src="ctrls/homeCtrl.js"></script>
+		<script type="text/javascript" src="ctrls/usersCtrl.js"></script>
+		<script type="text/javascript" src="ctrls/quizCtrl.js"></script>
+		<script type="text/javascript" src="ctrls/pointsCtrl.js"></script>
+		<script type="text/javascript" src="ctrls/bannerCtrl.js"></script>
+
+		<script type="text/javascript" src="services/api.js"></script>
+		<script type="text/javascript" src="services/user.js"></script>
+
+	</body>
+
+</html>

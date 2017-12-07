@@ -1,0 +1,70 @@
+<div class="result_bg {{gameResult}} battel_result" ng-controller="battleResultCtrl as battle">
+<div class="container" >
+        <div class="row col-lg-12">
+            <div class="col-lg-3 player circle col-md-4">
+                <div class="result_cir circle_inner">
+                    <div class="profile_cover">
+                        <div class="profile_border_lose"></div>
+                        <div class="img_cover">
+                            <img ng-src="{{userDetails.picture || defaultUser}}">
+                        </div>
+                    </div>
+
+                    <h2>{{userDetails.FirstName}} {{userDetails.LastName}}</h2>
+                    <p> <span ng-if="userDetails.occupation.name == 'Gymnasieelev'">{{ userDetails.institution.name }}</span>
+                        <br> {{ userDetails.slogan }}</p>
+                </div>
+            </div>
+            <div class="col-lg-6 its_tie col-md-4">
+                <div ng-if="opntTimer == true">
+                    <h3 class="remachTimer"><timer countdown="5" max-time-unit="'second'" interval="1000">{{sseconds}}</timer></h3>
+                </div>
+                <p ng-if="gameResult == 'gameTie'">You Tie!</p>
+                <p ng-if="gameResult == 'gameWon'">Du vandt!</p>
+                <p ng-if="gameResult == 'gameLost'">Du tabte!</p>
+            </div>
+            <div class="col-lg-3 player circle col-md-4">
+                <div class="result_cir circle_inner">
+                    <div class="profile_cover">
+                        <div class="profile_border_lose"></div>
+                        <div class="opponent_img img_cover">
+                             <img ng-src="{{opntDetails.picture}}">
+                        </div>
+                    </div>
+                    <h2>{{opntDetails.FirstName}} {{opntDetails.LastName}}</h2>
+                    <p> <span ng-if="userDetails.occupation.name == 'Gymnasieelev'">{{ opntDetails.institution }}</span>
+                        <br> {{ opntDetails.slogan }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12 looking_opponent">
+            <div class="shield">
+            <div class="score_tie_left">
+                <h1>Points:</h1>
+                <p>{{usrPlrGmePoint}}</p>
+            </div>
+                <img src="./assets/images/tie/leftrose.png">
+            </div>
+            <div class="shield_cross">
+                <img src="./assets/images/tie/crossimg.png">
+            </div>
+            <div class="shield shield-right">
+            <div class="score_tie_right">
+                <h1>Points:</h1>
+                <p>{{otrPlrGmePoint}}</p>
+            </div>
+                <img src="./assets/images/tie/rose.png">
+            </div>
+        </div>
+        <div class="col-lg-8 col-lg-offset-2 Result-btn">
+           <button ng-if="GiveUp != 'disable'" class="btn btn-success col-md-12 Rematch-btn" ng-click="rematchTrigger();">Spil igen</button>
+           <button class="btn btn-danger col-md-12 Incorrect-btn" ng-click="reDirectBootcamp()">Se forkerte svar</button>
+           <button class="btn btn-danger col-lg-6" ng-click="reDirectRanking()">Se rangering</button>
+           <button class="btn btn-danger col-lg-6 pull-right" ng-click="reDirectBattle()">Tilbage til Battle Menu</button>
+        </div>
+        <div class="clearfix"></div>
+        <div class="bannerWrapper">
+            <a href="{{adUrl}}" target="blank"><img ng-src="{{adImage}}" ></a>
+        </div>
+    </div>
+    </div>

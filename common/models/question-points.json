@@ -1,0 +1,24 @@
+{
+  "name": "QuestionPoints",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {},
+  "validations": [],
+  "relations": {
+    "question": {
+      "type": "belongsTo",
+      "model": "Question",
+      "foreignKey": ""
+    },
+    "points": {
+      "type": "belongsTo",
+      "model": "Points",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

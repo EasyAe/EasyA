@@ -1,0 +1,221 @@
+<div ng-controller="frntCtrl as battle">
+    <!---my model-->
+    <div id="login_modal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-md">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Welcome</h4>
+                </div>
+                <div class="modal-body ">
+                    <h3 class="sub_title_modal">Before you play, please tell us your:</h3>
+                    <div class="frnt_select">
+                        <select class="selectpicker">
+                            <option ng-repeat="list in battle.occupation">{{list.name}}</option>
+                        </select>
+                        <select class="selectpicker">
+                            <option ng-repeat="list in battle.region">{{list.name}}</option>
+                        </select>
+                        <select class="selectpicker">
+                            <option ng-repeat="list in battle.institution">{{list.name}}</option>
+                        </select>
+                    </div>
+                    <div class="frnt_select_footer">
+                        <button class="btn btn-success" data-dismiss="modal" data-backdrop="false" ng-click="go('/battle')">Confirm</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="first_section">
+        <div class="first_section_inner">
+        <div ng-include src="'scripts/app/views/include/header.html'"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 image_section">
+                    <div class="col-lg-6 col-md-6 image_section2">
+                        <img src="./assets/images/front/logo_front.png">
+                        <h2>Play to Score</h2>
+                        {{title}}
+                        <p>Battle dine gymnasievenner i pensum, <br>skriftilig og mundtlig eksamen.</p>
+                        <button class="letsbattle_button" ng-click="showRegister(userDetails.id);">Start her</button>
+                    </div>
+                    <br clear="all">
+                    <div class="downarrowimg" ng-click="gotoElement('middle')">
+                        <img src="./assets/images/front/down.png" ng-click="gotoElement('middle')">
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+        <div class="second_section" id="middle">
+            <div class="container">
+                <div class=" col-lg-12 second_section1">
+                    <div class=" col-lg-6 col-sm-12 col-md-6 second_section2">
+                        <h2>Battle</h2>
+                        <p>
+                            Konkurrer mod dine gymnasievenner i pensum, skriftlig og mundtlig eksamens- spørgsmål og deltag i turneringer.
+                        </p>
+                    </div>
+                    <div class=" col-lg-6 col-sm-12 col-md-6 second_section3">
+                        <img src="./assets/images/front/battle.png">
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+        <div class="second_section">
+            <div class="container">
+                <div class=" col-lg-12 second_section1">
+                    <div class=" col-lg-6 col-sm-12 col-md-6 second_section3">
+                        <img src="./assets/images/front/bootcamp.png">
+                    </div>
+                    <div class=" col-lg-6 col-sm-12 col-md-6 second_section2 second_section3">
+                        <h2>Bootcamp</h2>
+                        <p>
+                            Se dine forkerte svar og lær fra dine fejl. Genopfrisk teorien, få hukommelsestips og forbedr dine egne evner. 
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+        <div class="second_section">
+            <div class="container">
+                <div class=" col-lg-12 second_section1">
+                    <div class=" col-lg-6 col-sm-12 col-md-6 second_section2">
+                        <h2>Ranking</h2>
+                        <p>
+                            Se din placering og hvem der er bedst blandt dit gymnasium, din region og i hele Danmark.</p>
+                    </div>
+                    <div class=" col-lg-6 col-sm-12 col-md-6 second_section3">
+                        <img src="./assets/images/front/ranking.png">
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+        <div class="second_section">
+            <div class="container">
+                <div class=" col-lg-12 second_section1 final_section">
+                    <div class=" col-lg-6 col-sm-12 col-md-6 second_section3">
+                        <img src="./assets/images/front/min-profil.png">
+                    </div>
+                    <div class=" col-lg-6 col-sm-12 col-md-6 second_section2 second_section3">
+                        <h2>Min Profil</h2>
+                        <p>
+                            Følg med i dine fremskridt. Se dine points og statistik over vundne og tabte battles. </p>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    <div class="third_section">
+        <div class="container">
+            <div class="third_section_sub">
+                <h1>Hvorfor bruge Easy A+</h1>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-sm-12 col-md-6 testimonial_main">
+                    <div class="testimonial">
+                        <img src="./assets/images/front/quote.png" class="quoteimg">
+                        <p>
+                            Jeg bruger Easy A+ til at sikre et 12-tal i alle fag, så jeg kan komm ve ind på medicinstudiet.
+                        </p>
+                        <img src="./assets/images/front/girl1.png" class="third_imgsec">
+                    </div>
+                </div>
+                <div class="col-lg-6 col-sm-12 col-md-6 testimonial_main">
+                    <div class="testimonial">
+                        <img src="./assets/images/front/quote.png" class="quoteimg">
+                        <p class="lg">
+                            Jeg elsker at spille Playstation. Med Easy A+ kan jeg både spille og gennemføre gymnasiet samtidigt.
+                        </p>
+                        <img src="./assets/images/front/boy1.png" class="third_imgsec1">
+                    </div>
+                </div>
+                <div class="col-lg-6 col-sm-12 col-md-6 testimonial_main">
+                    <div class="testimonial">
+                        <img src="./assets/images/front/quote.png" class="quoteimg">
+                        <p>
+                            Jeg er ikke så stræberagtig, men jeg bruger Easy A+ til at bestå mine eksaminer. 
+                        </p>
+                        <img src="./assets/images/front/girl2.png" class="third_imgsec4">
+                    </div>
+                </div>
+                <div class="col-lg-6 col-sm-12 col-md-6 testimonial_main">
+                    <div class="testimonial">
+                        <img src="./assets/images/front/quote.png" class="quoteimg">
+                        <p>
+                            Med Easy A+ er der ingen pres om at følge med de andre.  Man kan tage det i sit eget tempo.
+                        </p>
+                        <img src="./assets/images/front/boy2.png" class="third_imgsec1">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="forth_bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="col-lg-6 col-sm-6 forthsec">
+                        <h2>Join <br>the Champions League<br> of Learning</h2>
+                        <p> Den eneste spilbaseret læringsplatform i Danmark skræddersyet til at få 12 i alle fag. Baseret på videnskab om Gamification og Performance Management. </p>
+                        <button class="letsbattle_button" ng-click="showRegister(userDetails.id);">Start her</button>
+                    </div>
+                    <div class="downarrowimg arrowTop" ng-click="gotoElement('middle')">
+                        <img src="./assets/images/front/up.png" ng-click="gotoElement('middle')">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="fivth_bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 fivth">
+                    <div class="fivthsec">
+                        <img src="./assets/images/front/footerlogo.png">
+                    </div>
+                    <div class="footer-social-icons">
+    <h2 class="_14">Bliv en del af vores community</h2>
+    <ul class="social-icons">
+        <li><a href="https://www.facebook.com/easyae.dk/" class="social-icon" target="blank"> <i class="fa fa-facebook"></i></a></li>
+        <li><a href="https://www.instagram.com/easyae.dk/" class="social-icon" target="blank"> <i class="fa fa-instagram"></i></a></li>
+        <li><a href="https://www.youtube.com/channel/UCffEOkOiVqP1EbRnmqFHeHA" class="social-icon" target="blank"> <i class="fa fa-youtube"></i></a></li>
+        <li><a href="https://www.snapchat.com/add/easyae.dk" class="social-icon" target="blank"> <i class="fa fa-snapchat-ghost"></i></a></li>
+        <li><a href="https://www.linkedin.com/company-beta/17955955/" class="social-icon" target="blank"> <i class="fa fa-linkedin"></i></a></li>
+    </ul>
+</div>
+                    <div class="footerNav">
+                            <ul>
+                                <li><a href="#">Om os</a></li>
+                                <li><a href="#">Kontakt</a></li>
+                                <li><a href="#">Team</a></li>
+                                <li><a href="#">Filosofi</a></li>
+                            </ul>
+                   
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bootom_footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 bootom_footer1">
+                    <div class="col-lg-8 col-sm-3">
+                        <p>2017 <a href="#">Edootech</a></p>
+                    </div>
+                    <div class="col-lg-2 col-sm-3">
+                        <p><a href="scripts/app/views/pdf/easya-terms.pdf" target="blank">Vilkår & betingelser</a></p>
+                    </div>
+                    <div class="col-lg-2 col-sm-3">
+                        <p><a href="#">Fortrolighedspolitik</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    

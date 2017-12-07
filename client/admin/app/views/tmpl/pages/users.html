@@ -1,0 +1,101 @@
+<div class="page users">
+    <section class="tile mfp-hide" fullscreen="isFullscreen01">
+        <!-- tile header -->
+        <div class="tile-header dvd dvd-btm">
+            <h1 class="custom-font"><strong>Exam Type</strong></h1>
+        </div>
+        <!-- /tile header -->
+        <div layout="row">
+            <div class="col-xs-10  col-md-offset-1">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for..." ng-model="search">
+                    <span class="input-group-btn">
+        <button class="btn btn-default" type="button">Search</button>
+      </span>
+                </div>
+                <!-- /input-group -->
+            </div>
+        </div>
+        <div layout="row ">
+            <div class="col-xs-10  col-md-offset-1 quiz_table">
+                <md-whiteframe class="md-whiteframe-3dp">
+                    <div class="table-responsive-vertical shadow-z-1">
+                        <table id="table" class="table table-hover table-mc-light-blue">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Nick name</th>
+                                    <th>E-mail</th>
+                                    <th>School</th>
+                                    <th>Inactive</th>
+                                    <th>Edit</th>
+                                    <th>Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-if='user.id!=1 && user.id!=2' ng-repeat="user in users | filter:search">
+                                    <td data-title="level">{{ user.userDetails.FirstName }} {{ user.userDetails.LastName }}</td>
+                                    <td data-title="img">{{ user.userDetails.nickname }}</td>
+                                    <td data-title="level">{{ user.email }}</td>
+                                    <td data-title="level">{{ user.userDetails.institution.name }}</td>
+                                    <td data-title="check">
+                                        <md-checkbox ng-model="user.banned" aria-label="{{user.id}}" ng-click="changeUserStatus(user.id,user.banned)"></md-checkbox>
+                                    </td>
+                                    <td data-title="edit"><a href="" class="icon icon-default transparent icon-ef-1 icon-ef-1b" ng-click="showUserEditModel(user.id)"><i class="fa fa-pencil-square-o"></i></a></td>
+                                    <td data-title="edit"><a href="" class="icon icon-default transparent icon-ef-1 icon-ef-1b" ng-click="showDeleteModel(user.id)"><i class="fa fa-trash-o"></i></a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </md-whiteframe>
+            </div>
+        </div>
+    </section>
+    <script id="userEditModel.html" type="text/ng-template">
+        <div class="modal-ext" id="edit_user">
+            <div class="modal-main">
+                <!--Content-->
+                <div class="content-main">
+                    <div class="modal-body">
+                        <h1 class="custom-font"><strong>Edit User</strong></h1>
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <input type="text" ng-model="user.userDetails.FirstName" placeholder="Name">
+                        </md-input-container>
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <input type="text" ng-model="user.userDetails.nickname" placeholder="Nick Name">
+                        </md-input-container>
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <input type="text" ng-model="user.email" placeholder="Email">
+                        </md-input-container>
+                        <div class="quiz_library_select">
+                            <md-select ng-model="user.institution" placeholder="Institution Name" class="md-no-underline" required md-no-asterisk="false">
+                                <md-option ng-repeat="institution in institutions track by $index" ng-selected="{{ user.userDetails.institutionId === institution.id ? 'true' : 'false' }}" value="{{institution.id}}">{{institution.name}}
+                            </md-select>
+                        </div>
+                    </div>
+                    <md-button type="button" class="md-raised md-warn modal_save pull-right" data-dismiss="modal" ng-click="cancel()">Cancel</md-button>
+                    <md-button type="button" class="md-raised md-primary pull-right" data-dismiss="modal" ng-click="updateUser(user.id)" style="background: rgb(3, 175, 91);color: rgba(255, 255, 255, 0.87);">Save</md-button>
+                </div>
+            </div>
+            <!--/.Content-->
+        </div>
+    </script>
+    <script id="userDeleteModel.html" type="text/ng-template">
+        <div class="modal-ext" id="edit_subject">
+            <div class="modal-main">
+                <!--Content-->
+                <div class="content-main">
+                    <div class="modal-body">
+                        <h1 class="custom-font"><strong>Confirm that you want to delete this and all its content?</strong></h1>
+                        <span>(This action can't be reversed)</span>
+                    </div>
+                    <div class="action_btn">
+                        <md-button type="button" class="md-raised md-primary modal_save" data-dismiss="modal" ng-click="cancel()" style="background: rgb(3, 175, 91);color: rgba(255, 255, 255, 0.87);">Keep</md-button>
+                        <md-button type="button" class="md-raised md-primary modal_save confirm md-warn" data-dismiss="modal" ng-click="ok(userId)">Confirm</md-button>
+                    </div>
+                </div>
+            </div>
+            <!--/.Content-->
+        </div>
+    </script>
+</div>

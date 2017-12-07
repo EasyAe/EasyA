@@ -1,0 +1,5 @@
+.idea/
+client/base_admin/app/minovate/.idea/
+/client/node_modules
+/node_modules
+client/app/bower_components

@@ -1,0 +1,145 @@
+<div class="page quiz_library exam_type question_page">
+    <section class="tile mfp-hide" fullscreen="isFullscreen01">
+        <!-- tile header -->
+        <div class="tile-header dvd dvd-btm">
+            <h1 class="custom-font"><strong>Quiz library - Questions</strong></h1>
+            <span>{{education.name}} > {{subject.name}} > {{examType.name}} > {{subcategory.name}}</span>
+        </div>
+        <div class="tile-widget" style="display: block;">
+            <p>Edit or delete an existing question or create a new one by pressing the plus sign.</p>
+        </div>
+        <!-- /tile header -->
+        <div layout="row">
+            <div class="col-xs-12 add_education">
+                <a ng-click="back()" class="icon icon-default pull-right"><i class="fa fa-arrow-left"></i></a>
+                <a href="" class="icon icon-default pull-right" data-toggle="modal" data-target="#add_question"><i class="fa fa-plus"></i></a>
+            </div>
+        </div>
+        <div layout="row">
+            <div class="col-xs-12">
+                <div class="col-xs-9">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <input ng-model="searchquestion" id="search" placeholder="Search for your question / Quiz here">
+                    </md-input-container>
+                </div>
+                <div class="col-xs-3">
+                    <md-select ng-model="pageSize" id="pageSize" placeholder="All Educations" class="md-no-underline" required md-no-asterisk="false">
+                        <md-option ng-repeat="option in options" value="{{option.value}}">Show {{option.value}} Questions</md-option>
+                    </md-select>
+                </div>
+            </div>
+        </div>
+        <div layout="row ">
+            <div class="col-xs-12 quiz_table">
+                <md-whiteframe class="md-whiteframe-3dp">
+                    <div class="table-responsive-vertical shadow-z-1">
+                        <table id="table" class="table table-striped table-mc-light-blue">
+                            <span class="page_number pull-right"> Showing {{currentPage+1}} of {{numberOfPages()}}</span>
+                            <thead>
+                                <tr>
+                                    <th>Subcategory / Name</th>
+                                    <th>Theme</th>
+                                    <th>Type</th>
+                                    <th>Level 11</th>
+                                    <th>Active?</th>
+                                    <!-- <th>Created</th> -->
+                                    <th>Edit</th>
+                                    <th>Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="question in questions | filter:searchquestion | startFrom:currentPage*pageSize | limitTo:pageSize">
+                                    <td data-title="subcategory">{{question.name}}</td>
+                                    <td data-title="subject">{{question.theme.name}}</td>
+                                    <td data-title="type">{{question.questionType.name}}</td>
+                                    <td data-title="check">
+                                        <md-checkbox ng-model="question.level11" aria-label="{{question.id}}" ng-click="changeQuestionLevel(question.id,question.level11)"></md-checkbox>
+                                    </td>
+                                    <td data-title="check">
+                                        <md-checkbox ng-model="question.active" aria-label="{{question.id}}" ng-click="changeQuestionStatus(question.id,question.active)"></md-checkbox>
+                                    </td>
+                                    <!-- <td data-title="created">{{question.created}}</td> -->
+                                    <td data-title="edit" ng-show="question.questionTypeId == '1'"><a href="" class="icon icon-default transparent icon-ef-1 icon-ef-1b" ui-sref="app.multiple-choice-edit({eId:eId,sId:sId,eTid:eTid,sCid:sCid,qId:qId,qsId:question.id,qtId:1})"><i class="fa fa-pencil"></i></a></td>
+                                    <td data-title="edit" ng-show="question.questionTypeId == '2'"><a href="" class="icon icon-default transparent icon-ef-1 icon-ef-1b" ui-sref="app.puzzle-edit({eId:eId,sId:sId,eTid:eTid,sCid:sCid,qId:qId,qsId:question.id,qtId:2})"><i class="fa fa-pencil"></i></a></td>
+                                    <td data-title="edit" ng-show="question.questionTypeId == '3'"><a href="" class="icon icon-default transparent icon-ef-1 icon-ef-1b" ui-sref="app.fill-blanks-edit({eId:eId,sId:sId,eTid:eTid,sCid:sCid,qId:qId,qsId:question.id,qtId:3})"><i class="fa fa-pencil"></i></a></td>
+                                    <td data-title="delete"><a href="" class="icon icon-default transparent icon-ef-1 icon-ef-1b delete" ng-click="showDeleteModel(question.id)"><i class="fa fa-archive"></i></a></td> 
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </md-whiteframe>
+                <div class="page_nav pull-right">
+                    <md-button class="md-raised md-primary" ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1">Previous page</md-button>
+                    <md-button class="md-raised md-primary" ng-disabled="currentPage >= getData().length/pageSize - 1" ng-click="currentPage=currentPage+1">Next page</md-button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="modal fade modal-ext" id="new_subject" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <!--Content-->
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h1 class="custom-font"><strong>Create new Sub Category</strong></h1>
+                    <p class="create_pluse">Fill in the name for the new sub category. Upload a picture and save it.</p>
+                    <div class="file_upload">
+                        <img ng-src="images/pers.png">
+                        <input type="file" name="" accept="image/png">
+                        <md-button class="md-raised md-primary">Upload</md-button>
+                    </div>
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <input type="text" ng-model="subject" placeholder="create a new Subject">
+                    </md-input-container>
+                </div>
+                <md-button type="button" class="md-raised md-primary pull-right" data-dismiss="modal">Save</md-button>
+            </div>
+        </div>
+        <!--/.Content-->
+    </div>
+    <div class="modal fade modal-ext" id="add_question" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <!--Content-->
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h1 class="custom-font"><strong>Pick the wanted catacory for the new question</strong></h1>
+                    <div layout="row">
+                        <div class="col-xs-6">
+                            <button data-dismiss="modal" ui-sref="app.multiple-choice({eId:eId,qId:qId,eTid:eTid,sCid:sCid,qtId:1})" class="btn btn-ef btn-ef-2 btn-ef-2-primary btn-ef-2a mb-10">Multiple Choice</button>
+                        </div>
+                        <div class="col-xs-6">
+                            <button data-dismiss="modal" ui-sref="app.puzzle({eId:eId,qId:qId,eTid:eTid,sCid:sCid,qtId:2})" class="btn btn-ef btn-ef-2 btn-ef-2-primary btn-ef-2a mb-10">Puzzle</button>
+                        </div>
+                    </div>
+                    <!-- <div layout="row">
+                        <div class="col-xs-6">
+                            <button data-dismiss="modal" ui-sref="app.fill-blanks({eId:eId,qId:qId,eTid:eTid,sCid:sCid,qtId:3})" class="btn btn-ef btn-ef-2 btn-ef-2-primary btn-ef-2a mb-10">Fill in the blanks</button>
+                        </div>
+                        <div class="col-xs-6">
+                            <button data-dismiss="modal" ui-sref="app.drag-drop({eId:eId,qId:qId,eTid:eTid,sCid:sCid,qtId:4})" class="btn btn-ef btn-ef-2 btn-ef-2-primary btn-ef-2a mb-10">Drag and drop</button>
+                        </div>
+                    </div> -->
+                    <md-button type="button" class="md-raised md-warn modal_save pull-right" data-dismiss="modal">Cancel</md-button>
+                </div>
+            </div>
+        </div>
+        <!--/.Content-->
+    </div>
+    <script id="questionDeleteModel.html" type="text/ng-template">
+        <div class="modal-ext" id="edit_subject">
+            <div class="modal-main">
+                <!--Content-->
+                <div class="content-main">
+                    <div class="modal-body">
+                        <h1 class="custom-font"><strong>Confirm that you want to delete this and all its content?</strong></h1>
+                        <span>(This action can't be reversed)</span>
+                    </div>
+                    <div class="action_btn">
+                        <md-button type="button" class="md-raised md-primary modal_save" data-dismiss="modal" ng-click="cancel()" style="background: rgb(3, 175, 91);color: rgba(255, 255, 255, 0.87);">Keep</md-button>
+                        <md-button type="button" class="md-raised md-primary modal_save confirm md-warn" data-dismiss="modal" ng-click="ok(qId)">Delete</md-button>
+                    </div>
+                </div>
+            </div>
+            <!--/.Content-->
+        </div>
+    </script>
+</div>

@@ -1,0 +1,156 @@
+/*
+IMPORTANT NOTE:
+ This file SHOULD NOT BE EDITED MANUALLY, as its purpose
+ is to be the point where all your stylesheet-files will
+ be imported
+*/
+
+
+
+// inject:sass
+
+@import '_functions/_some-function.scss';
+
+@import '_mixins/_some-mixin.scss';
+
+@import '_placeholders/_some-placeholder.scss';
+
+@import '_variables.scss';
+
+@import '../scripts/aaal/components/aaal-header/_aaal-header.scss';
+
+@import '../scripts/aaal/components/aaal-overview-table/_aaal-overview-table.scss';
+
+@import '../scripts/aaal/components/auth/login/_login-d.scss';
+
+@import '../scripts/aaal/routes/answer/_answer-edit-c.scss';
+
+@import '../scripts/aaal/routes/answer/_answer-list-c.scss';
+
+@import '../scripts/aaal/routes/answer/_answer-view-c.scss';
+
+@import '../scripts/aaal/routes/bootcamp/_bootcamp-edit-c.scss';
+
+@import '../scripts/aaal/routes/bootcamp/_bootcamp-list-c.scss';
+
+@import '../scripts/aaal/routes/bootcamp/_bootcamp-view-c.scss';
+
+@import '../scripts/aaal/routes/bootcamp-resolved/_bootcamp-resolved-edit-c.scss';
+
+@import '../scripts/aaal/routes/bootcamp-resolved/_bootcamp-resolved-list-c.scss';
+
+@import '../scripts/aaal/routes/bootcamp-resolved/_bootcamp-resolved-view-c.scss';
+
+@import '../scripts/aaal/routes/city/_city-edit-c.scss';
+
+@import '../scripts/aaal/routes/city/_city-list-c.scss';
+
+@import '../scripts/aaal/routes/city/_city-view-c.scss';
+
+@import '../scripts/aaal/routes/container/_container-edit-c.scss';
+
+@import '../scripts/aaal/routes/container/_container-list-c.scss';
+
+@import '../scripts/aaal/routes/container/_container-view-c.scss';
+
+@import '../scripts/aaal/routes/country/_country-edit-c.scss';
+
+@import '../scripts/aaal/routes/country/_country-list-c.scss';
+
+@import '../scripts/aaal/routes/country/_country-view-c.scss';
+
+@import '../scripts/aaal/routes/education-type/_education-type-edit-c.scss';
+
+@import '../scripts/aaal/routes/education-type/_education-type-list-c.scss';
+
+@import '../scripts/aaal/routes/education-type/_education-type-view-c.scss';
+
+@import '../scripts/aaal/routes/exam-type/_exam-type-edit-c.scss';
+
+@import '../scripts/aaal/routes/exam-type/_exam-type-list-c.scss';
+
+@import '../scripts/aaal/routes/exam-type/_exam-type-view-c.scss';
+
+@import '../scripts/aaal/routes/institution/_institution-edit-c.scss';
+
+@import '../scripts/aaal/routes/institution/_institution-list-c.scss';
+
+@import '../scripts/aaal/routes/institution/_institution-view-c.scss';
+
+@import '../scripts/aaal/routes/level/_level-edit-c.scss';
+
+@import '../scripts/aaal/routes/level/_level-list-c.scss';
+
+@import '../scripts/aaal/routes/level/_level-view-c.scss';
+
+@import '../scripts/aaal/routes/occupation/_occupation-edit-c.scss';
+
+@import '../scripts/aaal/routes/occupation/_occupation-list-c.scss';
+
+@import '../scripts/aaal/routes/occupation/_occupation-view-c.scss';
+
+@import '../scripts/aaal/routes/question/_question-edit-c.scss';
+
+@import '../scripts/aaal/routes/question/_question-list-c.scss';
+
+@import '../scripts/aaal/routes/question/_question-view-c.scss';
+
+@import '../scripts/aaal/routes/question-type/_question-type-edit-c.scss';
+
+@import '../scripts/aaal/routes/question-type/_question-type-list-c.scss';
+
+@import '../scripts/aaal/routes/question-type/_question-type-view-c.scss';
+
+@import '../scripts/aaal/routes/quiz/_quiz-edit-c.scss';
+
+@import '../scripts/aaal/routes/quiz/_quiz-list-c.scss';
+
+@import '../scripts/aaal/routes/quiz/_quiz-view-c.scss';
+
+@import '../scripts/aaal/routes/region/_region-edit-c.scss';
+
+@import '../scripts/aaal/routes/region/_region-list-c.scss';
+
+@import '../scripts/aaal/routes/region/_region-view-c.scss';
+
+@import '../scripts/aaal/routes/sub-category/_sub-category-edit-c.scss';
+
+@import '../scripts/aaal/routes/sub-category/_sub-category-list-c.scss';
+
+@import '../scripts/aaal/routes/sub-category/_sub-category-view-c.scss';
+
+@import '../scripts/aaal/routes/subject/_subject-edit-c.scss';
+
+@import '../scripts/aaal/routes/subject/_subject-list-c.scss';
+
+@import '../scripts/aaal/routes/subject/_subject-view-c.scss';
+
+@import '../scripts/aaal/routes/user-details/_user-details-edit-c.scss';
+
+@import '../scripts/aaal/routes/user-details/_user-details-list-c.scss';
+
+@import '../scripts/aaal/routes/user-details/_user-details-view-c.scss';
+
+@import '../scripts/aaal/routes/users/_users-edit-c.scss';
+
+@import '../scripts/aaal/routes/users/_users-list-c.scss';
+
+@import '../scripts/aaal/routes/users/_users-view-c.scss';
+
+@import 'base/_buttons.scss';
+
+@import 'base/_fonts.scss';
+
+@import 'base/_forms.scss';
+
+@import 'base/_icons.scss';
+
+@import 'base/_lists.scss';
+
+@import 'base/_page.scss';
+
+@import 'base/_tables.scss';
+
+@import 'base/_typography.scss';
+
+// endinject

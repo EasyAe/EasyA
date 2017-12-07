@@ -1,0 +1,27 @@
+<div id="welcome_user">
+    <div class="modal-main">
+        <!-- Modal content-->
+        <div class="content-main">
+            <div class="modal-header">
+                <h4 class="modal-title">Velkommen</h4>
+            </div>
+            <form name="welcomeForm" class="modal-body ">
+                <h3 class="sub_title_modal">Før du går i gang, vær venlig at fortælle os:</h3>
+                <div class="frnt_select">
+                    <md-select ng-model="user.occupationId" placeholder="Beskæftigelse" ng-change="occupationChanged()" required>
+                        <md-option ng-repeat="occupation in occupations" value="{{occupation.id}}">{{occupation.name}}</md-option>
+                    </md-select>
+                    <md-select ng-model="user.regionId" placeholder="Region" required>
+                        <md-option ng-repeat="region in regions" value="{{region.id}}">{{region.name}}</md-option>
+                    </md-select>
+                    <md-select ng-model="user.institutionId"  ng-show="occuFilter == 'Gymnasieelev' || occuFilter == 'Gymnasielærer' || occuFilter == 'Rektor på ungdomsuddannelse' || occuFilter == 'Vicerektor på ungdomsuddannelse'" placeholder="Skole">
+                        <md-option ng-repeat="institution in institutions" value="{{institution.id}}">{{institution.name}}</md-option>
+                    </md-select>
+                </div>
+                <div class="frnt_select_footer">
+                    <button class="btn btn-success" ng-disabled='welcomeForm.$invalid' ng-click="welSubmit(user);">Bekræft</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

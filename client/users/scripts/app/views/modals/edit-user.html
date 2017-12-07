@@ -1,0 +1,88 @@
+<div id="editProfile">
+    <div class="modal-main">
+        <!-- Modal content-->
+        <div class="content-main">
+            <div class="modal-header">
+                <h4 class="modal-title">Edit Profile</h4>
+            </div>
+            <div class="modal-body">
+                <form name="editprofile" class="form-validation" novalidate>
+                    <div class="edit-form">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input type="text" class="form-control underline-input" placeholder="First name" ng-model="editUser.FirstName" >
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control underline-input" placeholder="Last name" ng-model="editUser.LastName" >
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input type="text" class="form-control underline-input" placeholder="Kaldenavn" ng-model="editUser.username" >
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control underline-input" placeholder="Slogan" ng-model="editUser.slogan" >
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <md-select ng-model="editUser.occupationId" placeholder="Occupation" ng-change="changed()">
+                                    <md-option ng-repeat="occupation in occupations" value="{{occupation.id}}">{{occupation.name}}</md-option>
+                                </md-select>
+                            </div>
+                            <div class="col-md-6">
+                                <md-select ng-model="editUser.regionId" placeholder="Region">
+                                    <md-option ng-repeat="region in regions" value="{{region.id}}">{{region.name}}</md-option>
+                                </md-select>
+                            </div> 
+                        </div>
+                        <div class="row" ng-if="occuFilter == 'Gymnasieelev' || occuFilter == 'Gymnasielærer' || occuFilter == 'Rektor på ungdomsuddannelse' || occuFilter == 'Vicerektor på ungdomsuddannelse'">
+                            <div class="col-md-12">
+                                <md-select ng-model="editUser.institutionId" placeholder="Institution">
+                                    <md-option ng-repeat="institution in institutions" value="{{institution.id}}">{{institution.name}}</md-option>
+                                </md-select>
+                            </div>
+                        </div>
+                        <hr>
+                        <h4 ng-click="showPassword();">Ny adgangskode</h4>
+                        <div class="row" ng-hide="password">
+                            <div class="col-md-12">
+                                <input type="password" class="form-control underline-input" placeholder="Current Password" ng-model="editpw.oldpassword" ng-required="password == false">
+                                <span class="errMsgPwd">{{errPwdMatch}}</span>
+                            </div>
+                        </div>
+                        <div class="row" ng-hide="password">
+                            <div class="col-md-6">
+                                <input type="password" id='pw1' name='pw1' class="form-control underline-input" placeholder="New Password" ng-model="editpw.newPassword" ng-required="password == false">
+                            </div>
+                            <div class="col-md-6">
+                                <input type="password" id='pw2' name='pw2' class="form-control underline-input" placeholder="Confirm Password" ng-model="editpw.confirmation" ng-required="password == false" pw-check='pw1'>
+                            </div>
+                        </div>
+                        <div class='msg-block' ng-show='editprofile.$error'>
+                            <span class='errMsgPwd' ng-show='editprofile.pw2.$error.pwmatch'>
+                            Passwords don't match.
+                          </span>
+                        </div>
+                        <div class="row textCenter" ng-hide="password">
+                            <div class="col-md-12">
+                                <button class="btn btn-success" ng-click="checkPwd(editpw)" ng-disabled="editprofile.$invalid" ng-show="password == false">
+                                    Update Password
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="footer_upload editUser-submit">
+                    <span class="error-message editUser-error" ng-show="editUserErr">{{editUserErrMsg}}</span>
+                    <button class="btn btn-success" ng-click="modalClose();">
+                        Afbryd
+                    </button>
+                    <button class="btn btn-success" ng-click="profileUpdate(editUser);" ng-disabled="editprofile.$invalid">
+                        Godkend
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+<!-- login modal-->
+<div id="login_user">
+    <div class="modal-main">
+        <!-- Modal content-->
+        <div class="content-main">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="modalClose();">&times;</button>
+                <p>Log ind</p>
+            </div>
+            <div class="modal-body">
+                <div class="login-type">
+                                <button ng-class="{'loginActive': emailField == true}" type="" class="login-btn" ng-click="emailField=true;loginClear(emailField);">Email</button>
+                                <button ng-class="{'loginActive': emailField == false}" type="" class="login-btn" ng-click="emailField=false;loginClear(emailField);">Brugernavn</button>
+                            </div>
+                <form name="form" class="form-validation" novalidate ng-submit="loginUser(login)">
+                    <div class="User-form">
+                        <div class="login-inner">
+                            <div class="login-fields">
+                                <div class="row field-inner"  ng-if="emailField==true">
+                                    <input type="email" class="form-control underline-input" placeholder="Email" ng-model="login.email" required>
+                                </div>
+                                <div class="row field-inner"  ng-if="emailField==false">
+                                    <input type="text" class="form-control underline-input" placeholder="Username" ng-model="login.username" required>
+                                </div>
+                                <div class="row field-inner">
+                                    <input type="password" placeholder="Password" class="form-control underline-input" ng-model="login.password" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="user-accept">
+                        <div class="user-accept-sub">
+                            <div class="row modal-submit">
+                                <div class="alert alert-danger error_msg_login" ng-show="loginError"><strong>{{loginErrorMessage}}</strong></div>
+                                <button type="submit" class="btn btn-success" ng-disabled='form.$invalid'>Log ind</button>
+                                <button type="button" class="btn btn-default btn-forgot" ng-click="forgotPassword()">Forgot Password?</button>
+                                <label class="checkbox checkbox-custom checkbox-custom-sm">
+                                    <input type="checkbox" ng-init="rememberMe=false" ng-model="rememberMe"><i></i> Remember me
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

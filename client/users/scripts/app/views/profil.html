@@ -1,0 +1,152 @@
+<div ng-include src="'scripts/app/views/include/header.html'"></div>
+<div class="container">
+    <div class="row">
+        <div ng-include src="'scripts/app/views/include/sidebar.html'"></div>
+        <div class="col-sm-8 col-md-8">
+            <div class="Profil" ng-controller="profilController">
+                <div class="Panels">
+                    <div class="Panels-header">
+                        <div class="Profil-info">
+                            <div class="col-md-3">
+                                <div class="Profil-avatar">
+                                    <a href="" ng-click="editAvatar()">
+                                        <md-tooltip md-direction="bottom">Click for editing pic</md-tooltip>
+                                        <img ng-src="{{userDetails.picture || defaultUser}}">
+                                    </a> 
+                                </div>
+                            </div>
+                            <div class="col-md-5 prof-info">
+                                <div class="Profil-info-header">
+                                    <p class="Profil-text-lg">{{userDetails.FirstName}} {{userDetails.LastName}}</p>
+                                    <p class="Profil-text-md">{{userDetails.username}}</p>
+                                </div>
+                                <div class="Profil-info-group">
+                                    <p class="Profil-text"  ng-if="userDetails.occupation.name == 'Gymnasieelev' || userDetails.occupation.name == 'Gymnasielærer' || userDetails.occupation.name == 'Rektor på ungdomsuddannelse' || userDetails.occupation.name == 'Vicerektor på ungdomsuddannelse'">
+                                        <span class="icon">
+                                                <i class="fa fa-university" aria-hidden="true"></i>
+                                            </span>{{ userDetails.institution.name }}
+                                    </p>
+                                    <p class="Profil-text">
+                                        <span class="icon">
+                                                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                            </span>&nbsp;&nbsp;{{ userDetails.region.name }}
+                                    </p>
+                                    <p class="Profil-text">
+                                        <span class="icon">
+                                                <i class="fa fa-quote-right" aria-hidden="true"></i>
+                                            </span>{{ userDetails.slogan }}
+                                    </p>
+                                    <p class="Profil-text">
+                                        <span class="icon">
+                                                <i class="fa fa-user" aria-hidden="true"></i>
+                                            </span>{{ userDetails.occupation.name }}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="Profil-button pull-right">
+                                    <a ng-href="" href="#" class="button" ng-click="editUser()">Rediger profil &nbsp;<i class="fa fa-pencil"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <hr>
+                    <div class="Panels-content">
+                        <div class="Profil-content">
+                            <div class="Profil-battles">
+                                <div class="Profil-battlesHeader">
+                                <div class="row">
+                                    <div class="col-md-9">
+                                        <p class="Profil-text-lg">Total battles der er gennemført:</p>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <section-stars value="{{ gameTotal }}"></section-stars>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>    
+                                </div>
+                                <div class="Profil-battlesContent">
+                                    <div class="roundProgress">
+                                        <round-progress max="gameTotal" current="gameWon" color="#5cb85c" bgcolor="#eaeaea" radius="50" stroke="7" semi="false" rounded="false" clockwise="true" responsive="false" duration="800" animation="easeInOutQuart" animation-delay="0"></round-progress>
+                                        <p class="Profil-text-lg value">{{ gameWon }}</p>
+                                        <p class="Profil-text-md">Du har vundet</p>
+                                    </div>
+                                    <div class="roundProgress">
+                                        <round-progress max="gameTotal" current="gameLost" color="#d9534f" bgcolor="#eaeaea" radius="50" stroke="7" semi="false" rounded="false" clockwise="true" responsive="false" duration="800" animation="easeInOutQuart" animation-delay="0"></round-progress>
+                                        <p class="Profil-text-lg value">{{ gameLost }}</p>
+                                        <p class="Profil-text-md">Du har tabt</p>
+                                    </div>
+                                    <div class="roundProgress">
+                                        <round-progress max="gameTotal" current="gameTie" color="#5bc0de" bgcolor="#eaeaea" radius="50" stroke="7" semi="false" rounded="false" clockwise="true" responsive="false" duration="800" animation="easeInOutQuart" animation-delay="0"></round-progress>
+                                        <p class="Profil-text-lg value">{{ gameTie }}</p>
+                                        <p class="Profil-text-md">Uafgjort</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <hr>
+                        <div class="Profil-content">
+                            <div class="Profil-points">
+                                <div class="Profil-pointsHeader">
+                                    <div class="col-md-9">
+                                        <p class="Profil-text-lg">Samlede point:</p>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <section-stars value="{{ userInfo.totalPoints.month }}"></section-stars>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                    <div id="contactchart">
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+                    <div class="clearfix"></div>
+                    <hr>
+                    <div class="Profil-content">
+                        <div class="Profil-battles">
+                            <div class="Profil-battlesHeader">
+                                <div class="col-md-9">
+                                    <p class="Profil-text-lg">Rankings</p>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="Profil-battlesContent battlesContent_margin">
+                                <div class="col-md-4 ranks"  ng-if="userDetails.occupation.name == 'Gymnasieelev' || userDetails.occupation.name == 'Gymnasielærer' || userDetails.occupation.name == 'Rektor på ungdomsuddannelse' || userDetails.occupation.name == 'Vicerektor på ungdomsuddannelse'">
+                                    <div class="rank">{{cmnSchoolRank}}</div>
+                                    <img src="./assets/images/rank-highschool.jpg">
+                                    <h3>Gymnasie</h3>
+                                </div>
+
+                                <div class="col-md-6" ng-if="userDetails.occupation.name != 'Gymnasieelev' && userDetails.occupation.name != 'Gymnasielærer' && userDetails.occupation.name != 'Rektor på ungdomsuddannelse' && userDetails.occupation.name != 'Vicerektor på ungdomsuddannelse'">
+                                    <div class="rank">{{cmnRegionalRank}}</div>
+                                    <img src="./assets/images/rank-regional.jpg">
+                                    <h3>Regional</h3>
+                                </div>
+                                <div class="col-md-6"  ng-if="userDetails.occupation.name != 'Gymnasieelev' && userDetails.occupation.name != 'Gymnasielærer' && userDetails.occupation.name != 'Rektor på ungdomsuddannelse' && userDetails.occupation.name != 'Vicerektor på ungdomsuddannelse'">
+                                    <div class="rank">{{cmnNationalRank}}</div>
+                                    <img src="./assets/images/rank-national.jpg">
+                                    <h3>National</h3>
+                                </div>
+                                <div class="col-md-4" ng-if="userDetails.occupation.name == 'Gymnasieelev' || userDetails.occupation.name == 'Gymnasielærer' || userDetails.occupation.name == 'Rektor på ungdomsuddannelse' || userDetails.occupation.name == 'Vicerektor på ungdomsuddannelse'">
+                                    <div class="rank">{{cmnRegionalRank}}</div>
+                                    <img src="./assets/images/rank-regional.jpg">
+                                    <h3>Regional</h3>
+                                </div>
+                                <div class="col-md-4"  ng-if="userDetails.occupation.name == 'Gymnasieelev' || userDetails.occupation.name == 'Gymnasielærer' || userDetails.occupation.name == 'Rektor på ungdomsuddannelse' || userDetails.occupation.name == 'Vicerektor på ungdomsuddannelse'">
+                                    <div class="rank">{{cmnNationalRank}}</div>
+                                    <img src="./assets/images/rank-national.jpg">
+                                    <h3>National</h3>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

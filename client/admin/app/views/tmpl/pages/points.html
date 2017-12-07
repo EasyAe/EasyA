@@ -1,0 +1,52 @@
+<div class="page points">
+    <section class="tile mfp-hide" fullscreen="isFullscreen01">
+        <!-- tile header -->
+        <div class="tile-header dvd dvd-btm">
+            <h1 class="custom-font"><strong>Points</strong></h1>
+            <br>
+            <span> At this screen you can change the amount of points given or taken</span>
+        </div>
+        <!-- /tile header -->
+        <div layout="row ">
+            <div class="col-xs-6  col-md-offset-3 quiz_table">
+                <md-whiteframe class="md-whiteframe-3dp">
+                    <div class="table-responsive-vertical shadow-z-1">
+                        <table id="table" class="table table-hover table-mc-light-blue">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Multiplayer</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-if="point.multiPlayer" ng-repeat="(i, point) in points track by $index">
+                                    <td data-title="level"><b>{{ point.name }}</b></td>
+                                    <td data-title="img">
+                                        <input type="number" name="" ng-model="points[i].value" class="numbr">
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Single Player</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-if="point.singlePlayer" ng-repeat="(i, point) in points track by $index">
+                                    <td data-title="level"><b>{{ point.name }}</b></td>
+                                    <td data-title="img">
+                                        <input type="hidden" name="" ng-model="points[i].id">
+                                        <input type="number" name="" ng-model="points[i].value" class="numbr">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </md-whiteframe>
+                <md-button type="button" class="md-raised md-primary pull-right" ng-click="updatePoints()" style="background: rgb(3, 175, 91);color: rgba(255, 255, 255, 0.87);">Save</md-button>
+            </div>
+        </div>
+    </section>
+    
+</div>

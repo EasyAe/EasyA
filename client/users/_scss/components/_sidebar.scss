@@ -1,0 +1,105 @@
+.Sidebar {
+  &-avatar {
+    position: relative;
+    top: 30px;
+    margin: auto;
+    width: 162px;
+    height: 131px;
+    img {
+      position: absolute;
+      width: 117px;
+      border: 5px solid $gray-light;
+      border-radius: 100%;
+      left: 22px;
+      top: -5px;
+    }
+  }
+  &-content {
+    position: relative;
+    margin-top: 70px;
+    padding: 25px;
+    text-align: center;
+
+    &-title {
+      color: $gray-text-dark;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    &-subtitle {
+      color: $gray-text;
+      font-size: 16px;
+      font-weight: bold;
+    }
+  }
+
+  &-points {
+    border-top: 7px solid $yellow-orange;
+    border-bottom: 7px solid $red-orange;
+    background-image: linear-gradient($yellow-orange, $red-orange),
+    linear-gradient($yellow-orange, $red-orange);
+    background-size: 7px 100%;
+    background-position: 0 0, 100% 0;
+    background-repeat: no-repeat;
+    border-radius: 15px;
+
+    &-content {
+      position: relative;
+      padding: 10px;
+      p {
+        margin: 0px;
+      }
+      .total {
+        color: $gray-text;
+        font-size: 16px;
+        font-weight: bold;
+      }
+
+      .number {
+        color: $gray-text-dark;
+        font-size: 30px;
+        font-weight: bold;
+      }
+      &:before {
+        position: absolute;
+        top: 50%;
+        left: 10%;
+        display: block;
+        content: "";
+        width: 24px;
+        height: 24px;
+        transform: translateY(-50%);
+      }
+
+      &:after {
+        position: absolute;
+        top: 50%;
+        right: 10%;
+        display: block;
+        content: "";
+        width: 24px;
+        height: 24px;
+        transform: translateY(-50%);
+      }
+    }
+  }
+
+  &-progressBar{
+    margin-top: 10px;
+    text-align: left;
+
+    p{
+        margin: 0;
+        color: $gray-text;
+        
+        strong{
+            color: $gray-text-dark;
+        }
+    }
+
+    .progress{
+      margin: 5px 0 10px 0;
+      height: 10px;
+    }
+  }
+}

@@ -1,0 +1,14 @@
+<div class="page--question-overview">
+    <button type="button"
+            ui-sref="private.QuestionEdit"
+            class="btn btn-success">
+        <i class="glyphicon glyphicon-plus">
+        </i> Add new item
+    </button>
+
+    <aaal-overview-table columns="vm.columns"
+                         rows="vm.rowCollection"
+                         delete-fn="vm.removeItem(row)"
+                         view-state-link="{{ vm.viewState }}"
+                         edit-state-link="{{ vm.editState }}"></aaal-overview-table>
+</div>

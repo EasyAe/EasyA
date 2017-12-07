@@ -1,0 +1,39 @@
+<md-content class="home">
+	<table class="table" ng-init="hide=true">
+            <tr class="ng-table-group" ng-repeat-start="type in types">
+                <td colspan="6" ng-click="hide = !hide">
+                    <div layout="row">
+                        <span>{{ type }}</span>
+                        <span flex></span>
+                        <span class="glyphicon" ng-class="{ 'glyphicon glyphicon-menu-right': !hide, 'glyphicon glyphicon-menu-down': hide }"></span>
+                    </div>
+                </td>
+            </tr>
+            <tr ng-hide="hide" class="thead">
+                <th class="flex-10">Kontonummer</th>
+                <th class="flex-20">Kontonavn</th>
+                <th class="flex-10"></th>
+                <th class="flex-10">Beløb</th>
+                <!-- <th class="flex-30">Standard Kontonummer</th> -->
+                <th class="flex-10">Standard Kontonavn</th>
+            </tr>
+            <tr ng-hide="hide" ng-repeat="(key, account) in accounts | filter:{wmoAccountType:type} | orderBy: query[type].order" ng-repeat-end
+                class="hovered table__row">
+                <td sortable="'accountNumber'" data-title="'accountNumber'" groupable="'accountNumber'">
+                    asd
+                </td>
+                <td sortable="'name'" data-title="'Name'" groupable="'name'">
+                    asd
+                </td>
+                <td sortable="'debitCredit'" data-title="'debitCredit'" groupable="'debitCredit'">
+                    <!-- {{account.debitCredit}} -->
+                </td>
+                <td sortable="'totalInBaseCurrency'" data-title="'Money'">
+                    asd
+                </td>
+                <td>
+                    asd
+                </td>
+            </tr>
+        </table>
+</md-content>

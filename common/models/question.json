@@ -1,0 +1,85 @@
+{
+  "name": "Question",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "level11": {
+      "type": "boolean",
+      "required": true,
+      "default": false
+    },
+    "active": {
+      "type": "boolean",
+      "default": false
+    },
+    "instructions": {
+      "type": "string",
+      "required": true
+    },
+    "imageUrl": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "bootcamps": {
+      "type": "hasOne",
+      "model": "Bootcamp",
+      "foreignKey": ""
+    },
+    "questionType": {
+      "type": "belongsTo",
+      "model": "QuestionType",
+      "foreignKey": ""
+    },
+    "answers": {
+      "type": "hasMany",
+      "model": "Answer",
+      "foreignKey": ""
+    },
+    "points": {
+      "type": "hasMany",
+      "model": "Points",
+      "foreignKey": "",
+      "through": "QuestionPoints"
+    },
+    "theme": {
+      "type": "belongsTo",
+      "model": "Theme",
+      "foreignKey": ""
+    },
+    "subCategory": {
+      "type": "belongsTo",
+      "model": "subCategory",
+      "foreignKey": ""
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "admin",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    },
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}

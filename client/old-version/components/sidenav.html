@@ -1,0 +1,52 @@
+<md-sidenav
+    class="md-sidenav-left"
+    md-component-id="left"
+    md-is-locked-open="$mdMedia('gt-xs')"
+    md-whiteframe="4"
+  >
+  <md-content  flex layout="column" layout-align="space-between strech">
+    <div layout="column">
+      <md-button ui-sref-active="navActive" ui-sref="home" style="margin:0; border-bottom: 1px solid black; padding:20px;" class="" aria-label="home" layout="row">
+        <md-icon md-svg-icon="images/home.svg"></md-icon>
+        <div flex>Home</div>
+      </md-button>
+
+      <md-button ui-sref-active="navActive" ui-sref="users" style="margin:0; border-bottom: 1px solid black; padding:20px;" class="" aria-label="users" layout="row">
+        <md-icon md-svg-icon="images/users.svg"></md-icon>
+        <div flex>Users</div>
+      </md-button>
+
+      <md-button ui-sref-active="navActive" ui-sref="quiz" style="margin:0; border-bottom: 1px solid black; padding:20px;" class="" aria-label="quiz" layout="row">
+        <md-icon md-svg-icon="images/quiz.svg"></md-icon>
+        <div flex>Quiz Library</div>
+      </md-button>
+
+      <md-button ui-sref-active="navActive" ui-sref="points" style="margin:0; border-bottom: 1px solid black; padding:20px;" class="" aria-label="points" layout="row">
+        <md-icon md-svg-icon="images/points.svg"></md-icon>
+        <div flex>Points</div>
+      </md-button>
+
+      <md-button ui-sref-active="navActive" ui-sref="banner" style="margin:0; border-bottom: 1px solid black; padding:20px;" class="" aria-label="banner" layout="row">
+        <md-icon md-svg-icon="images/banner.svg"></md-icon>
+        <div flex>Banner</div>
+      </md-button>
+    </div>
+
+    <div style="text-align: center;" layout="column">
+      <div>
+      In doubt about anything?
+      </div>
+      <div>
+      See our <a class="green" href="">Support manual</a>
+      </div>
+      <div style="text-align: right; margin: 10px; font-size: 12px">
+        Copyright 2016
+      </div>
+
+    </div>
+
+
+
+  </md-content>
+
+</md-sidenav>

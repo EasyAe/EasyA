@@ -1,0 +1,40 @@
+{
+  "name": "Points",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "value": {
+      "type": "number",
+      "required": true,
+      "default": 0
+    },
+    "multiPlayer": {
+      "type": "boolean",
+      "required": true,
+      "default": false
+    },
+    "singlePlayer": {
+      "type": "boolean",
+      "required": true,
+      "default": false
+    }
+  },
+  "validations": [],
+  "relations": {
+    "questions": {
+      "type": "hasMany",
+      "model": "Question",
+      "foreignKey": "",
+      "through": "QuestionPoints"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

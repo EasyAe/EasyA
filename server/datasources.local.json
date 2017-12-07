@@ -1,0 +1,34 @@
+{
+  "db": {
+    "host": "localhost",
+    "port": 5432,
+    "database": "edootech",
+    "password": "111AA111a",
+    "name": "db",
+    "user": "postgres",
+    "connector": "postgresql"
+  },
+  "amazonS3": {
+    "name": "amazonS3",
+    "connector": "loopback-component-storage",
+    "provider": "amazon",
+    "key": "/FvSsiHjwT0LncSx1cNh9wcgyllYMCKlgd25sWKE",
+    "keyId": "AKIAITDUHY7CWFE4XFTQ"
+  },
+  "EmailDataSource": {
+    "name": "EmailDataSource",
+    "connector": "mail",
+    "transports": [
+      {
+        "type": "SMTP",
+        "host": "smtp.gmail.com",
+        "secure": true,
+        "port": 465,
+        "auth": {
+          "user": "petya.b.wiredelta@gmail.com",
+          "pass": "PetyaB2016"
+        }
+      }
+    ]
+  }
+}

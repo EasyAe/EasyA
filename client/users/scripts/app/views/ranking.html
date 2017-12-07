@@ -1,0 +1,250 @@
+<div ng-include src="'scripts/app/views/include/header.html'"></div>
+<div class="container">
+    <div class="row">
+        <div ng-include src="'scripts/app/views/include/sidebar.html'"></div>
+        <div class="col-sm-8 col-md-8 Main ranking_page">
+            <div class="Ranking" ng-controller="rankingController">
+                <div class="Panels">
+                    <div class="Panels-header">
+                        <div class="Battle-header">
+                            <p class="Battle-title" ng-if="tab==1">
+                                Ranking - Danmark
+                            </p>
+                            <p class="Battle-title" ng-if="tab==2">
+                                Ranking - Region
+                            </p>
+                            <p class="Battle-title" ng-if="tab==3" ng-if="userDetails.occupation.name == 'Gymnasieelev' || userDetails.occupation.name == 'Gymnasielærer' || userDetails.occupation.name == 'Rektor på ungdomsuddannelse' || userDetails.occupation.name == 'Vicerektor på ungdomsuddannelse'">
+                                Udannelsessted - Ranking
+                            </p>
+                        </div>
+                    </div>
+                    <div class="Ranking-menu">
+                        <ul>
+                            <li ng-class="{ active: isSet(1) }"><a href ng-click="setTab(1)">Danmark</a></li>
+                            <li ng-class="{ active: isSet(2) }"><a href ng-click="setTab(2)">Region</a></li>
+                            <li ng-class="{ active: isSet(3) }"><a href ng-click="setTab(3)" ng-if="userDetails.occupation.name == 'Gymnasieelev' || userDetails.occupation.name == 'Gymnasielærer' || userDetails.occupation.name == 'Rektor på ungdomsuddannelse' || userDetails.occupation.name == 'Vicerektor på ungdomsuddannelse'">Udannelsessted</a></li>
+                        </ul>
+                    </div>
+                    <div class="Panels-content">
+                        <div class="Battle-content">
+                            <div class="Region-filter" ng-show="isSet(2)">
+                                <md-select placeholder="Current Region:" ng-model="filterRegion">
+                                    <md-option ng-value="region.id" ng-repeat="region in regions">{{ region.name }}</md-option>
+                                </md-select>
+                            </div>
+                            <div class="clear-fix"></div>
+                            <div ng-show="isSet(1)">
+                                <div class="row">
+                                    <div class="Toppers col-sm-4">
+                                        <div class="Toppers-list"  ng-repeat="list in nationalRanking" ng-show="$index % nationalRanking.length == 1">
+                                            <div class="rank_holder">
+                                                <div class="rank_border"><span>2</span></div>
+                                                <div class="img_cover"><img ng-src="{{list.picture || defaultUser}}"></div>
+                                            </div>
+                                            <h1>{{list.FirstName}}</h1>
+                                            <p  ng-if="list.occupation.name == 'Gymnasieelev' || list.occupation.name == 'Gymnasielærer' || list.occupation.name == 'Rektor på ungdomsuddannelse' || list.occupation.name == 'Vicerektor på ungdomsuddannelse'">{{list.institution.name}}</p>
+                                            <p>{{list.occupation.name}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="Toppers col-sm-4" >
+                                        <div class="Toppers-list" ng-repeat="list in nationalRanking" ng-show="$index % nationalRanking.length == 0">
+                                            <div class="rank_holder">
+                                                <div class="rank_border"><span>1</span></div>
+                                                <div class="img_cover"><img ng-src="{{list.picture || defaultUser}}"></div>
+                                            </div>
+                                            <h1>{{list.FirstName}}</h1>
+                                            <p  ng-if="list.occupation.name == 'Gymnasieelev' || list.occupation.name == 'Gymnasielærer' || list.occupation.name == 'Rektor på ungdomsuddannelse' || list.occupation.name == 'Vicerektor på ungdomsuddannelse'">{{list.institution.name}}</p>
+                                            <p>{{list.occupation.name}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="Toppers col-sm-4" >
+                                        <div class="Toppers-list" ng-repeat="list in nationalRanking"  ng-show="$index % nationalRanking.length == 2">
+                                            <div class="rank_holder">
+                                                <div class="rank_border"><span>3</span></div>
+                                                <div class="img_cover"><img ng-src="{{list.picture || defaultUser}}"></div>
+                                            </div>
+                                            <h1>{{list.FirstName}}</h1>
+                                            <p  ng-if="list.occupation.name == 'Gymnasieelev' || list.occupation.name == 'Gymnasielærer' || list.occupation.name == 'Rektor på ungdomsuddannelse' || list.occupation.name == 'Vicerektor på ungdomsuddannelse'">{{list.institution.name}}</p>
+                                            <p>{{list.occupation.name}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="Submenu">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Rank</th>
+                                                <th></th>
+                                                <th>Navn</th>
+                                                <th>Uddannelsessted</th>
+                                                <th>Stilling</th>
+                                                <th>Score</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="list in nationalRanking">
+                                                <td>{{$index + 1}}</td>
+                                                <td>
+                                                    <div class="rankThumb">
+                                                        <img ng-src="{{list.picture || defaultUser}}">
+                                                    </div>
+                                                </td>
+                                                <td>{{list.FirstName}}</td>
+                                                <td><p ng-if="list.occupation.name == 'Gymnasieelev' || list.occupation.name == 'Gymnasielærer' || list.occupation.name == 'Rektor på ungdomsuddannelse' || list.occupation.name == 'Vicerektor på ungdomsuddannelse'">{{list.institution.name}}</p></td>
+                                                <td>{{list.occupation.name}}</td>
+                                                <td>{{list.points}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div ng-show="isSet(2)">
+                                <div class="row">
+                                    <div class="Toppers col-sm-4">
+                                        <div class="Toppers-list"  ng-repeat="list in regionalRanking | filter:{'regionId':  filterRegion}" ng-show="$index % regionalRanking.length == 1">
+                                            <div class="rank_holder">
+                                                <div class="rank_border"><span>2</span></div>
+                                                <div class="img_cover"><img ng-src="{{list.picture || defaultUser}}"></div>
+                                            </div>
+                                            <h1>{{list.FirstName}}</h1>
+                                            <p ng-if="list.occupation.name == 'Gymnasieelev' || list.occupation.name == 'Gymnasielærer' || list.occupation.name == 'Rektor på ungdomsuddannelse' || list.occupation.name == 'Vicerektor på ungdomsuddannelse'">{{list.institution.name}}</p>
+                                            <p>{{list.occupation.name}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="Toppers col-sm-4" >
+                                        <div class="Toppers-list" ng-repeat="list in regionalRanking| filter:{'regionId':  filterRegion}" ng-show="$index % regionalRanking.length == 0">
+                                            <div class="rank_holder">
+                                                <div class="rank_border"><span>1</span></div>
+                                                <div class="img_cover"><img ng-src="{{list.picture || defaultUser}}"></div>
+                                            </div>
+                                            <h1>{{list.FirstName}}</h1>
+                                            <p ng-if="list.occupation.name == 'Gymnasieelev' || list.occupation.name == 'Gymnasielærer' || list.occupation.name == 'Rektor på ungdomsuddannelse' || list.occupation.name == 'Vicerektor på ungdomsuddannelse'">{{list.institution.name}}</p>
+                                            <p>{{list.occupation.name}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="Toppers col-sm-4" >
+                                        <div class="Toppers-list" ng-repeat="list in regionalRanking| filter:{'regionId':  filterRegion}"  ng-show="$index % regionalRanking.length == 2">
+                                            <div class="rank_holder">
+                                                <div class="rank_border"><span>3</span></div>
+                                                <div class="img_cover"><img ng-src="{{list.picture || defaultUser}}"></div>
+                                            </div>
+                                            <h1>{{list.FirstName}}</h1>
+                                            <p ng-if="list.occupation.name == 'Gymnasieelev' || list.occupation.name == 'Gymnasielærer' || list.occupation.name == 'Rektor på ungdomsuddannelse' || list.occupation.name == 'Vicerektor på ungdomsuddannelse'">{{list.institution.name}}</p>
+                                            <p>{{list.occupation.name}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="Submenu">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Rank</th>
+                                                <th></th>
+                                                <th>Navn</th>
+                                                <th>Uddannelsessted</th>
+                                                <th>Stilling</th>
+                                                <th>Score</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="list in regionalRanking | filter:{'regionId':  filterRegion}">
+                                                <td>{{$index + 1}}</td>
+                                                <td>
+                                                    <div class="rankThumb">
+                                                        <img ng-src="{{list.picture || defaultUser}}">
+                                                    </div>
+                                                </td>
+                                                <td>{{list.FirstName}}</td>
+                                                <td><p ng-if="list.occupation.name == 'Gymnasieelev' || list.occupation.name == 'Gymnasielærer' || list.occupation.name == 'Rektor på ungdomsuddannelse' || list.occupation.name == 'Vicerektor på ungdomsuddannelse'">{{list.institution.name}}</p></td>
+                                                <td>{{list.occupation.name}}</td>
+                                                <td>{{list.points}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div ng-show="isSet(3)">
+                                <div class="row">
+                                    <div class="Toppers col-sm-4">
+                                        <div class="Toppers-list"  ng-repeat="list in schoolRanking" ng-show="$index % schoolRanking.length == 1">
+                                            <div class="rank_holder">
+                                                <div class="rank_border"><span>2</span></div>
+                                                <div class="img_cover"><img ng-src="{{list.picture || defaultUser}}"></div>
+                                            </div>
+                                            <h1>{{list.FirstName}}</h1>
+                                            <p ng-if="list.occupation.name == 'Gymnasieelev' || list.occupation.name == 'Gymnasielærer' || list.occupation.name == 'Rektor på ungdomsuddannelse' || list.occupation.name == 'Vicerektor på ungdomsuddannelse'">{{list.institution.name}}</p>
+                                            <p>{{list.occupation.name}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="Toppers col-sm-4" >
+                                        <div class="Toppers-list" ng-repeat="list in schoolRanking" ng-show="$index % schoolRanking.length == 0">
+                                            <div class="rank_holder">
+                                                <div class="rank_border"><span>1</span></div>
+                                                <div class="img_cover"><img ng-src="{{list.picture || defaultUser}}"></div>
+                                            </div>
+                                            <h1>{{list.FirstName}}</h1>
+                                            <p ng-if="list.occupation.name == 'Gymnasieelev' || list.occupation.name == 'Gymnasielærer' || list.occupation.name == 'Rektor på ungdomsuddannelse' || list.occupation.name == 'Vicerektor på ungdomsuddannelse'">{{list.institution.name}}</p>
+                                            <p>{{list.occupation.name}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="Toppers col-sm-4" >
+                                        <div class="Toppers-list" ng-repeat="list in schoolRanking"  ng-show="$index % schoolRanking.length == 2">
+                                            <div class="rank_holder">
+                                                <div class="rank_border"><span>3</span></div>
+                                                <div class="img_cover"><img ng-src="{{list.picture || defaultUser}}"></div>
+                                            </div>
+                                            <h1>{{list.FirstName}}</h1>
+                                            <p  ng-if="list.occupation.name == 'Gymnasieelev' || list.occupation.name == 'Gymnasielærer' || list.occupation.name == 'Rektor på ungdomsuddannelse' || list.occupation.name == 'Vicerektor på ungdomsuddannelse'">{{list.institution.name}}</p>
+                                            <p>{{list.occupation.name}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="Submenu">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Rank</th>
+                                                <th></th>
+                                                <th>Navn</th>
+                                                <th>Uddannelsessted</th>
+                                                <th>Stilling</th>
+                                                <th>Score</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="list in schoolRanking">
+                                                <td>{{$index + 1}}</td>
+                                                <td>
+                                                    <div class="rankThumb">
+                                                        <img ng-src="{{list.picture || defaultUser}}">
+                                                    </div>
+                                                </td>
+                                                <td>{{list.FirstName}}</td>
+                                                <td><p ng-if="list.occupation.name == 'Gymnasieelev' || list.occupation.name == 'Gymnasielærer' || list.occupation.name == 'Rektor på ungdomsuddannelse' || list.occupation.name == 'Vicerektor på ungdomsuddannelse'">{{list.institution.name}}</p></td>
+                                                <td>{{list.occupation.name}}</td>
+                                                <td>{{list.points}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="Ranking-footer">
+                                <table class="table table-footer">
+                                    <tr>
+                                        <td>{{userRank}}</td>
+                                        <td><div class="userRank"><img src="{{userDetails.picture || defaultUser}}"></div></td>
+                                        <td>{{userDetails.FirstName}}</td>
+                                        <td><p>{{userDetails.occupation.name}}</p></td>
+                                        <td>{{userDetails.points}}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>

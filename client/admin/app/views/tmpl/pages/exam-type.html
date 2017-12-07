@@ -1,0 +1,143 @@
+<div class="page quiz_library exam_type question_page">
+    <section class="tile mfp-hide" fullscreen="isFullscreen01">
+        <!-- tile header -->
+        <div class="tile-header dvd dvd-btm">
+            <h1 class="custom-font"><strong>Quiz library - Exam Type</strong></h1>
+            <span>{{education.name}} > {{subject.name}}</span>
+        </div>
+        <!-- /tile header -->
+        <div layout="row">
+            <div class="col-xs-10  col-md-offset-1">
+                <div class="add_education">
+                    <div class="pull-left">
+                        <span>Total: 122</span>
+                    </div>
+                    <a ng-click="back()" class="icon icon-default pull-right"><i class="fa fa-arrow-left"></i></a>
+                    <a href="" class="icon icon-default pull-right" data-toggle="modal" data-target="#new_subject"><i class="fa fa-plus"></i></a>
+                </div>
+            </div>
+        </div>
+        <div layout="row ">
+            <div class="col-xs-10  col-md-offset-1 quiz_table">
+                <md-whiteframe class="md-whiteframe-3dp">
+                    <div class="table-responsive-vertical shadow-z-1">
+                        <table id="table" class="table table-hover table-mc-light-blue">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Picture</th>
+                                    <th>Name</th>
+                                    <th>Edit</th>
+                                    <th>Delete</th>
+                                    <th>Active?</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="exam in exam_type | unique:'id'">
+                                    <td></td>
+                                    <td data-title="img"><img ng-src="{{exam.imageUrl}}" style="width: 32px; height: 32px;"></td>
+                                    <td data-title="level">{{exam.name}}</td>
+                                    <td data-title="edit"><a href="" class="icon icon-default transparent icon-ef-1 icon-ef-1b" ng-click="showExamTypeEditModel(exam.id)"><i class="fa fa-pencil"></i></a></td>
+                                    <td data-title="delete"><a href="" class="icon icon-default transparent icon-ef-1 icon-ef-1b delete" ng-click="showExamTypeDeleteModel(exam.id)"><i class="fa fa-archive"></i></a></td>
+                                    <td data-title="check">
+                                        <md-checkbox ng-model="exam.active" aria-label="{{exam.id}}" ng-click="changeExamStatus(exam.id,exam.active)"></md-checkbox>
+                                    </td>
+                                    <td>
+                                        <a ui-sref="app.subcategory({eId:eId,qId:qId,eTid:exam.id})">View <i class="fa fa-arrow-right"></i></a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </md-whiteframe>
+            </div>
+        </div>
+    </section>
+    <div class="modal fade modal-ext" id="new_subject" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <!--Content-->
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h1 class="custom-font"><strong>Create new Exam Type</strong></h1>
+                    <p class="create_pluse">Fill in the name for the new exam type. Upload a picture and save it.</p>
+                    <form name="createExam">
+                        <div class="file_upload">
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <img ngf-src="examTypeImage" class="thumb" style="width: 50px; height: 50px;">
+                                <input type="file" ng-model="examTypeImage" name="examTypeImage" ngf-select required accept="image/png">
+                                <md-button class="md-raised md-primary">Upload</md-button>
+                                <div class="errors" ng-messages="createExam.examTypeImage.$error">
+                                    <div ng-message="required">Image required</div>
+                                </div>
+                            </md-input-container>
+                        </div>
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <input type="text" ng-model="examTypeName" name="examTypeName" placeholder="Create a new exam type" required>
+                            <div class="errors" ng-messages="createExam.examTypeName.$error">
+                                <div ng-message="required">Required</div>
+                            </div>
+                        </md-input-container>
+                        <md-input-container class="md-block" flex-gt-sm>
+                            <input type="text" ng-model="examInstruction" name="examInstruction" placeholder="Instruction">
+                            <!-- <div class="errors" ng-messages="createExam.examInstruction.$error">
+                                <div ng-message="required">Required</div>
+                            </div> -->
+                        </md-input-container>
+                    </form>
+                </div>
+                <md-button type="button" class="md-raised md-warn modal_save pull-right" data-dismiss="modal">Cancel</md-button>
+                <md-button type="button" class="md-raised md-primary pull-right" data-dismiss="modal" ng-click="createExamType()" ng-disabled="!(examTypeName && examTypeImage)" style="background: rgb(3, 175, 91);color: rgba(255, 255, 255, 0.87);">Save</md-button>
+            </div>
+        </div>
+        <!--/.Content-->
+    </div>
+    <script id="examTypeEditModel.html" type="text/ng-template">
+        <div class="modal-ext quiz_library" id="edit_subject">
+            <div class="modal-main">
+                <!--Content-->
+                <div class="content-main">
+                    <div class="modal-body">
+                        <h1 class="custom-font"><strong>Edit Exam Type</strong></h1>
+                        <p class="create_pluse">Change the name or picture to the desired one and save it.</p>
+                        <form name="editExam">
+                            <div class="file_upload">
+                                <img ng-hide="examTypeEditImage" ng-src="{{ exam.imageUrl}}" style="width: 50px; height: 50px;">
+                                <img ngf-src="examTypeEditImage" class="thumb" style="width: 50px; height: 50px;">
+                                <input type="file" ng-model="examTypeEditImage" name="examTypeEditImage" ngf-select accept="image/png">
+                                <md-button class="md-raised md-primary">Upload</md-button>
+                            </div>
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <input type="text" ng-model="exam.name" ng-init="exam.name" name="examTypeEditName" placeholder="Exam Type Name">
+                            </md-input-container>
+                            <md-input-container class="md-block" flex-gt-sm>
+                                <input type="text" ng-model="exam.instructions" ng-init="exam.instructions"  name="examEditInstruction" placeholder="Instruction">
+                            </md-input-container>
+                        </form>
+                    </div>
+                    <md-button type="button" class="md-raised md-warn modal_save pull-right" data-dismiss="modal" ng-click="cancel()">Cancel</md-button>
+                    <md-button type="button" class="md-raised modal_save pull-right" data-dismiss="modal" ng-click="updateExamType(exam.id)" style="background: rgb(3, 175, 91);color: rgba(255, 255, 255, 0.87);">Save</md-button>
+                </div>
+            </div>
+            <!--/.Content-->
+        </div>
+    </script>
+    <script id="examTypeDeleteModel.html" type="text/ng-template">
+        <div class="modal-ext" id="edit_subject">
+            <div class="modal-main">
+                <!--Content-->
+                <div class="content-main">
+                    <div class="modal-body">
+                        <h1 class="custom-font"><strong>Confirm that you want to delete this and all its content?</strong></h1>
+                        <span>(This action can't be reversed)</span>
+                    </div>
+                    <div class="action_btn">
+                        <md-button type="button" class="md-raised md-primary modal_save" data-dismiss="modal" ng-click="cancel()" style="background: rgb(3, 175, 91);color: rgba(255, 255, 255, 0.87);">Keep</md-button>
+                        <md-button type="button" class="md-raised md-primary modal_save confirm md-warn" data-dismiss="modal" ng-click="ok(eId)">Delete</md-button>
+                    </div>
+                </div>
+            </div>
+            <!--/.Content-->
+        </div>
+    </script>
+</div>

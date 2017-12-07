@@ -1,0 +1,105 @@
+<div class="page quiz_library">
+    <section class="tile mfp-hide" fullscreen="isFullscreen01">
+        <!-- tile header -->
+        <div class="tile-header dvd dvd-btm">
+            <h1 class="custom-font"><strong>Quiz library - Education</strong></h1>
+        </div>
+        <!-- /tile header -->
+        <!-- tile widget -->
+        <div class="tile-widget" style="display: block;">
+            <p>Pick the desired education in the list or sort by education in the dropdown. Then select the corresponding subject and level you wish to see or add questions to.</p>
+        </div>
+        <span class="create_pluse">To create a new subject press the plus.</span>
+        <div layout="row" class="quiz_library_select">
+            <div class="col-xs-10  col-md-offset-1">
+                <!-- <md-select ng-model="education" placeholder="All Educations" class="md-no-underline" required md-no-asterisk="false">
+                    <md-option value="!!">All</md-option>
+                    <md-option ng-repeat="education_option in education_options" value="{{education_option.name}}">{{education_option.name}}</md-option>
+                </md-select> -->
+                <div class="add_education">
+                    <a href="" class="icon icon-default" data-toggle="modal" data-target="#new_subject"><i class="fa fa-plus"></i></a>
+                </div>
+            </div>
+        </div>
+        <div layout="row ">
+            <div class="col-xs-10  col-md-offset-1 quiz_table">
+                <md-whiteframe class="md-whiteframe-3dp">
+                    <div class="table-responsive-vertical shadow-z-1">
+                        <table id="table" class="table table-hover table-mc-light-blue">
+                            <thead>
+                                <tr>
+                                    <th>Education</th>
+                                    <th>Edit</th>
+                                    <th>Delete</th>
+                                    <!-- <th>Active?</th> -->
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="educationData in educationDatas | filter:education">
+                                    <td data-title="education">{{educationData.name}}</td>
+                                    <td data-title="edit"><a href="" class="icon icon-default transparent icon-ef-1 icon-ef-1b"  ng-click="showQuizEditModel(educationData.id)"><i class="fa fa-pencil"></i></a></td>
+                                    <td data-title="delete"><a href="" class="icon icon-default transparent icon-ef-1 icon-ef-1b delete"  ng-click="showDeleteModel(educationData.id)"><i class="fa fa-archive"></i></a></td>
+                                    <!-- <td data-title="check"> -->
+                                        <!-- <md-checkbox ng-model="educationData.active" aria-label="{{educationData.id}}" ng-click="changeEducationStatus(educationData.id,educationData.active)"></md-checkbox> -->
+                                    <!-- </td> -->
+                                    <td>
+                                        <a ui-sref="app.subject({eId:educationData.id})">View <i class="fa fa-arrow-right"></i></a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </md-whiteframe>
+            </div>
+        </div>
+    </section>
+    <div class="modal fade modal-ext" id="new_subject" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" name="newQuiz">
+        <div class="modal-dialog" role="document">
+            <!--Content-->
+            <div class="modal-content">
+                <div class="modal-body">
+                    <form name="createQuizForm">
+                        <div class="education">
+                            <h1 class="custom-font"><strong>Education</strong></h1>
+                            <md-input-container class="md-block" flex-gt-sm ng-hide="isEnabled >'0'">
+                                <input type="text" ng-model="name" name="name" placeholder="Create a new Education" required>
+                                <div class="errors" ng-messages="createEduForm.name.$error">
+                                    <div ng-message="required">Education Name Required</div>
+                                </div>
+                            </md-input-container>
+                        </div>
+                    </form>
+                </div>
+                <md-button type="button" class="md-raised md-warn modal_save pull-right" data-dismiss="modal">Cancel</md-button>
+                <md-button type="button" class="md-raised pull-right" data-dismiss="modal" ng-click="createEducation()" ng-disabled="!(name)" style="background: rgb(3, 175, 91);color: rgba(255, 255, 255, 0.87);">Save</md-button>
+            </div>
+        </div>
+        <!--/.Content--> 
+    </div>
+    <script id="quizEditModel.html" type="text/ng-template">
+        <div class="modal-ext quiz_library" id="edit_subject">
+            <div class="modal-main">
+                <!--Content-->
+                <div class="content-main">
+                    <form name="createEduForm">
+                        <div class="modal-body">
+                            <div class="education">
+                                <h1 class="custom-font"><strong>Education</strong></h1>
+                                <md-input-container class="md-block" flex-gt-sm ng-hide="isEnabled >'0'">
+                                    <input type="text" ng-model="edu.name" name="edu.name" placeholder="Create a new Education" required>
+                                    <div class="errors" ng-messages="createEduForm.name.$error">
+                                        <div ng-message="required">Education Name Required</div>
+                                    </div>
+                                </md-input-container>
+                            </div>
+                        </div>
+                        <md-button type="button" class="md-raised md-warn modal_save pull-right" data-dismiss="modal" ng-click="cancel()">Cancel</md-button>
+                        <md-button type="button" class="md-raised modal_save pull-right" data-dismiss="modal" ng-click="updateEducation(edu.id)" style="background: rgb(3, 175, 91);color: rgba(255, 255, 255, 0.87);">Save</md-button>
+                    </form>
+                </div>
+            </div>
+            <!--/.Content-->
+        </div>
+    </script>
+</div>

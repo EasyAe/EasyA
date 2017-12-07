@@ -1,0 +1,13 @@
+/* Global Styles */
+
+body{
+  margin-top: 80px;
+  background-color: $gray;
+  color: $gray-text;
+  font-family: 'Raleway', sans-serif;
+}
+
+hr{
+  border-top: 3px solid $gray;
+  width: 85%;
+}

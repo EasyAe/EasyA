@@ -1,0 +1,113 @@
+<div ng-controller="singlePlayerBootcampCtrl" class="gameBg">
+    <div class="container">
+        <div class="Gametop">
+            <!-- <div class="col-lg-6 col-sm-5 martina">
+                <div class="col-md-4 col-sm-6 col-sm-6">
+                    <div class="battle_profile profile_cover">
+                        <div class="profile_border_lose"></div>
+                        <div class="img_cover"><img ng-src="{{usrDetail.picture || defaultUser}}"></div>
+                    </div>
+                </div>
+                <div class="col-md-7 col-sm-6">
+                    <h2>{{usrDetail.FirstName}} {{usrDetail.LastName}}</h2>
+                    <p>{{ usrDetail.slogan }}</p>
+                </div>
+            </div> -->
+            <!-- <div class="col-lg-2 col-sm-2 rounds">
+                <h2>Runde {{gameRoundNo}}</h2>
+                <h3 class="timer"><timer countdown="120" max-time-unit="'minute'" interval="1000">{{mminutes}} : {{sseconds}}</timer></h3>
+            </div> -->
+            <div class="clearfix"></div>
+            <p class="gameMid">{{quesstate.qstName}}</p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="col-lg-12">
+            <!-- <div class="col-lg-2 col-sm-3 mrgn-right">
+                <div class=" prograss_bar_left">
+                    <p>Point</p>
+                    <p>{{usrPlrGmePoint}}</p>
+                    <div class="progress progress-bar-vertical">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="height: {{(usrPlrGmePoint/220)*100}}%;">
+                        </div>
+                    </div>
+                </div>
+                <button class="button" ng-click="givUp();">Giv Op</button>
+            </div> -->
+            <!-- middle content starts-->
+            <div class="col-lg-12 col-sm-12 rounds_bg">
+                <!-- Sortable starts-->
+                <div ng-if="usrQuestions.questionTypeId ==2" class="order_answer">
+                    <!-- <div class="col-lg-12 formules">
+                        <div class="row">
+                            <div class="col-lg-12 ">
+                                Reducer udtrykket
+                                <h1>(a+b) + 2(b-a)</h1>
+                            </div>
+                        </div>
+                    </div> -->
+                    <div class="clearfix"></div>
+
+                    <div class="question_wrapper col-xs-12 formules" ng-if="showQuestion == true" >
+                                <img ng-src="{{usrQuestions.imageUrl}}" class="question_image">
+                            </div>
+                            <div class="question_wrapper col-xs-12 formules" ng-if="showQuestion == false">
+                                <p>{{usrQuestions.imageUrl}}</p>
+                            </div>
+                    <div class="center_heading">
+                        {{usrQuestions.instructions}}
+                    </div>
+                    <div ui-sortable="sortableOptions" ng-model="quotes" class="list-group answer_main">
+                        <span class="answer_disable" ng-show="answerEnable"></span>
+                        <div ng-repeat="item in quotes" ng-class="{'answerDisable': answerEnable==true}" class="col-xs-12 formules sortable">
+                            <div ng-if="showAnswer == true">
+                                <img ng-src="{{item.content}}" class="answer_image">
+                            </div>
+                            <div ng-if="showAnswer == false">
+                                <p>{{item.content}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Sortable Ends-->
+                <!-- Selectable starts-->
+                <div ng-if="usrQuestions.questionTypeId ==1" class="choose_answer">
+                    <!-- <div class="col-lg-12 formules">
+                        <div class="row">
+                            <div class="col-lg-12 ">
+                                Reducer udtrykket
+                                <h1>(a+b) + 2(b-a)</h1>
+                            </div>
+                        </div>
+                    </div> -->
+                    <div class="clearfix"></div>
+                    <div class="question_wrapper col-xs-12 formules" ng-if="showQuestion == true">
+                                <img ng-src="{{usrQuestions.imageUrl}}" class="question_image">
+                            </div>
+                            <div class="question_wrapper col-xs-12 formules" ng-if="showQuestion == false">
+                                <p>{{usrQuestions.imageUrl}}</p>
+                            </div>
+                    <div class="center_heading">
+                        {{usrQuestions.instructions}}
+                    </div>
+                    <div class="answer_main">
+                        <span class="answer_disable" ng-show="answerEnable"></span>
+                        <div ng-repeat="data in quotes" ng-class="{'answerDisable': answerEnable==true}" class="col-xs-12 formules bg-{{ data.value }}" selectable="setActiveItem(data.id)">
+                            <div ng-if="showAnswer == true">
+                                <img ng-src="{{data.content}}" class="answer_image">
+                            </div>
+                            <div ng-if="showAnswer == false">
+                                <p>{{data.content}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Selectable Ends ng-if="showAnswer == false"-->
+            </div>
+            <!-- middle content Ends-->
+            <!-- <button class="button" ng-click="submitAnswerCheck(qeid, usrDetail.usersId, activeItem);" id="{{activeItem}}">Submit</button> -->
+            <button ng-if="usrQuestions.questionTypeId ==1" class="button-green disableBtn pull-right " ng-click="submitAnswerCheck(qeid, usrDetail.usersId, activeItem, usrQuestions.questionTypeId);" id="{{activeItem}}" ng-disabled="ansBtnEnable">Endeligt&nbsp;svar</button>
+                <button ng-if="usrQuestions.questionTypeId ==2" class="button-green disableBtn pull-right " ng-click="submitAnswerCheck(qeid, usrDetail.usersId, quotes, usrQuestions.questionTypeId);" id="{{activeItem}}">Endeligt&nbsp;svar</button>
+        </div>
+    </div>
+</div>
