@@ -1,9 +1,9 @@
 (function () {
   angular.module('usersEasyA+')
-    .controller('singlePlayerCtrl', ['$scope', '$rootScope' ,'$location', '$uibModal', '$routeParams', 'questionApi', 'userApi', 'answerApi', '$timeout', singlePlayerCtrl]);
-  
+    .controller('singlePlayerCtrl', ['$scope',  '$rootScope' ,'$location', '$uibModal', '$routeParams', 'questionApi', 'userApi', 'answerApi', '$timeout', singlePlayerCtrl]);
+
     function singlePlayerCtrl( $scope, $rootScope, $location, $uibModal, $routeParams, questionApi, userApi, answerApi, $timeout) {
-        
+
         if($rootScope.battleSubCategoryId == 'undefined' || $rootScope.battleSubCategoryId == null){
             $location.path('/single/player');
         }
@@ -12,6 +12,8 @@
         var questionList = [];
         var roundCount = 0;
         var timeoutfunction;
+        var winsound = new Audio('scripts/app/sound/test.mp3');
+        var failsound = new Audio('scripts/app/sound/test.mp3');
         $scope.usrPlrGmePoint = 0;
 
         getNextQuestion(SubCatId, questionIds); // Get first question
@@ -28,7 +30,7 @@
 
         function getNextQuestion(battleSubCategoryId, questionIds){
             var timer;
-            
+
             roundCount++;
             $scope.gameRoundNo = roundCount;
             questionApi.getQuestion(battleSubCategoryId, questionIds)//For getting questions
@@ -81,7 +83,7 @@
             console.log(errorUser);
         });
 
-        
+
 
         $scope.submitAnswerMultiPlayer = function(bQuestion, answerId) {
             questionIds.push(bQuestion.question.id);
@@ -106,7 +108,10 @@
             answerApi.checkSinglePlayerAnswer(checkAnswer)//For checking answers
             .then(function(success) {
                 if (success.data.result.answer == true) {
+                    winsound.play();
                     $scope.usrPlrGmePoint = $scope.usrPlrGmePoint + success.data.result.points;
+                } else {
+                    failsound.play();
                 }
                 $rootScope.$broadcast('updateUsrPoints', {});
                 getNextQuestion($rootScope.battleSubCategoryId, questionIds); // Get next question
@@ -152,7 +157,7 @@
                     };
                     $scope.no = function() {
                         $uibModalInstance.dismiss('Close');
-                        
+
                     };
                 }
             });
