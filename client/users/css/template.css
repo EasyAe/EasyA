@@ -358,6 +358,8 @@ button.sBplayer{
 }
 .gameBg {
     background-image: url("../assets/images/round/backgroundimg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
     margin-top: -80px;
 }
 .progress-bar-vertical {
@@ -3609,4 +3611,3 @@ hr.eduFilter{
 .single_playerend .popup_battle2{
     height: auto;
 }
-
