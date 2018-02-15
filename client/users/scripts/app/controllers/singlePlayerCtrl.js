@@ -12,8 +12,8 @@
         var questionList = [];
         var roundCount = 0;
         var timeoutfunction;
-        var winsound = new Audio('scripts/app/sound/test.mp3');
-        var failsound = new Audio('scripts/app/sound/test.mp3');
+        var winsound = new Audio('scripts/app/sound/win.mp3');
+        var failsound = new Audio('scripts/app/sound/lose.mp3');
         $scope.usrPlrGmePoint = 0;
 
         getNextQuestion(SubCatId, questionIds); // Get first question
